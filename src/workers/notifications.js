@@ -9,10 +9,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const emailNotification = async (newNews) => {
+  //limit number of news articles to 5
+  const limitedNews = newNews.slice(0, 5);
+
   const htmlContent = await ejs.renderFile(
     path.join(__dirname, "templates", "newsTemplate.ejs"),
     {
-      newNews: newNews,
+      newNews: limitedNews,
       unsubscribeLink: "https://your-website.com/unsubscribe",
     }
   );
