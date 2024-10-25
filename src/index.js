@@ -1,7 +1,10 @@
 import app from "./app.js";
 import { dbConnect } from "./connectors/dbConnect.js";
-import startNewsBackupCron from "./workers/news-clean.js";
-import { startNewsFetchCron } from "./workers/news-fetch.js";
+import { connectToRedis } from "./connectors/redisConnect.js";
+import dotenv from "dotenv";
+import movieFetcherScheduler from "./schedulers/movieFetcherScheduler.js";
+
+dotenv.config();
 
 const mongoUrl = process.env.MONGO_URI;
 const dbName = process.env.DB_NAME;
@@ -12,14 +15,11 @@ try {
   app.listen(port, async () => {
     console.log(`Server is running on port ${port}`);
 
-    //startNewsBackupCron();
-
     try {
-      startNewsFetchCron();
+      connectToRedis();
+      movieFetcherScheduler();
     } catch (redisError) {
       console.error(`Error connecting to Redis: ${redisError}`);
-      // Optionally, you can choose to exit the process or continue without Redis
-      // process.exit(1);
     }
   });
 } catch (error) {
