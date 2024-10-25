@@ -16,8 +16,8 @@ try {
     console.log(`Server is running on port ${port}`);
 
     try {
-      connectToRedis();
-      movieFetcherScheduler();
+      // await connectToRedis();
+      // await movieFetcherScheduler();
     } catch (redisError) {
       console.error(`Error connecting to Redis: ${redisError}`);
     }
