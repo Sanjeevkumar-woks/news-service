@@ -4,6 +4,7 @@ import NewsArticle from "../models/newsModel.js";
 import dotenv from "dotenv";
 import emailNotification from "./notifications.js";
 import _ from "lodash";
+import OldNewsArticle from "../models/oldNewsModel.js";
 dotenv.config();
 
 export function startNewsFetchCron() {
@@ -12,7 +13,7 @@ export function startNewsFetchCron() {
     try {
       // Fetch news from an external API
       const response = await axios.get(
-        "https://newsdata.io/api/1/news?apikey=pub_57205dc3e5674001387470f8dac81af1b6c58&q=Music&country=in&language=en"
+        "https://newsdata.io/api/1/news?apikey=pub_57205dc3e5674001387470f8dac81af1b6c58&language=en"
       );
 
       const fetchedArticles = response.data.results;
@@ -22,11 +23,12 @@ export function startNewsFetchCron() {
 
       console.log(oldNewsArticles.length, "old");
 
-      const newNewsArticles = _.differenceBy(
+      let newNewsArticles = _.differenceBy(
         fetchedArticles,
         oldNewsArticles,
         "article_id"
       );
+      newNewsArticles = _.uniqBy(newNewsArticles, "article_id");
 
       console.log(newNewsArticles.length, "new");
 
@@ -34,6 +36,7 @@ export function startNewsFetchCron() {
       if (!_.isEmpty(newNewsArticles)) {
         await NewsArticle.insertMany(newNewsArticles);
         console.log("News fetched and saved successfully.");
+        await OldNewsArticle.insertMany(newNewsArticles);
         await emailNotification(newNewsArticles);
         console.log("Email sent successfully");
       }

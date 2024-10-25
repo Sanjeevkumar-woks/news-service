@@ -1,12 +1,13 @@
 import cron from "node-cron";
+import OldNewsArticle from "../models/oldNewsModel.js";
+import NewsArticle from "../models/newsModel.js";
 
-//function that clears the stored news articles older than 24 hours
-function startNewsCleanCron() {
+//function that moves the news articles older than 24 hours to the oldNews collection and deletes them from the news collection
+const startNewsBackupCron = () => {
   cron.schedule("* * * * *", async () => {
-    await NewsArticle.deleteMany({
-      createdAt: { $lte: new Date(Date.now() - 24 * 60 * 60 * 1000) },
-    });
+    await OldNewsArticle.insertMany(await NewsArticle.find());
+    await NewsArticle.deleteMany({});
   });
-}
+};
 
-export default startNewsCleanCron;
+export default startNewsBackupCron;
