@@ -1,31 +1,25 @@
 import moviesFetchQueue from "../queues/moviesQueue.js";
-import movieFetcherWorker from "../workers/movieFetcherWorker.js";
 
 const movieFetcherScheduler = async () => {
   console.log("movieFetcherScheduler");
+
+  // Remove existing repeatable jobs to ensure only the latest schedule is active
+  await moviesFetchQueue.obliterate({ force: true });
+
+  // Now, add a new repeatable job with the desired configuration
   await moviesFetchQueue.add(
     "moviesFetchQueue",
     {},
     {
       repeat: {
-        every: 1000 * 60 * 60, //1hr
+        every: 1000 * 60 * 60, // 1 hour (3600000 milliseconds)
       },
-      defaultJobOptions: {
-        removeOnComplete: true,
-        removeOnFail: true,
-      },
+      removeOnComplete: true,
+      removeOnFail: true,
     }
   );
 
   console.log("Scheduled email job added to the queue.");
 };
-
-movieFetcherWorker.on("completed", (job) => {
-  console.log(`Job ${job.id} completed`);
-});
-
-movieFetcherWorker.on("failed", (job, err) => {
-  console.error(`Job ${job.id} failed with error: ${err.message}`);
-});
 
 export default movieFetcherScheduler;

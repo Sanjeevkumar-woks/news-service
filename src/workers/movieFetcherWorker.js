@@ -14,53 +14,68 @@ const redis = {
   password: process.env.REDIS_PASSWORD,
 };
 
-const movieFetcherWorker = new Worker(
-  "moviesFetchQueue",
-  async (job) => {
-    console.log("movieFetcherWorker started");
-    try {
-      // Fetch news from an external API
-      const response = await axios.get(
-        "https://newsdata.io/api/1/news?apikey=pub_57205dc3e5674001387470f8dac81af1b6c58&language=en"
-      );
+export async function startMovieFetcherWorker() {
+  const movieFetcherWorker = new Worker(
+    "moviesFetchQueue",
+    async (job) => {
+      console.log(`Job ${job.id} started`);
+      try {
+        // Fetch news from an external API
+        const response = await axios.get(
+          "https://newsdata.io/api/1/news?apikey=pub_57205dc3e5674001387470f8dac81af1b6c58&language=en"
+        );
 
-      const fetchedArticles = response.data.results;
+        const fetchedArticles = response.data.results || [];
 
-      // Fetch old news articles from the database
-      const oldNewsArticles = await NewsArticle.find();
+        // Fetch existing news articles from the database
+        const existingArticles = await NewsArticle.find({}, { article_id: 1 });
+        console.log(`${existingArticles.length} existing articles found.`);
 
-      console.log(oldNewsArticles.length, "old");
+        // Filter out the new articles that are not in the database
+        const newNewsArticles = fetchedArticles.filter(
+          (article) =>
+            !existingArticles.some(
+              (existing) => existing.article_id === article.article_id
+            )
+        );
 
-      let newNewsArticles = _.differenceBy(
-        fetchedArticles,
-        oldNewsArticles,
-        "article_id"
-      );
+        console.log(`${newNewsArticles.length} new articles found.`);
 
-      // Remove duplicate articles
-      newNewsArticles = _.uniqBy(newNewsArticles, "article_id");
+        // Insert new articles into the database if there are any
+        if (newNewsArticles.length > 0) {
+          await NewsArticle.insertMany(newNewsArticles);
+          console.log("News fetched and saved successfully.");
+          await OldNewsArticle.insertMany(newNewsArticles);
+          await emailNotification(newNewsArticles);
+          console.log("New News articles email sent successfully.");
+        } else {
+          console.log("No new articles found.");
+        }
 
-      console.log(newNewsArticles.length, "new");
-
-      // Insert new articles into the database
-      if (!_.isEmpty(newNewsArticles)) {
-        await NewsArticle.insertMany(newNewsArticles);
-        console.log("News fetched and saved successfully.");
-        await OldNewsArticle.insertMany(newNewsArticles);
-        await emailNotification(newNewsArticles);
-        console.log("New News articles email sent successfully");
+        // Return the result of the job
+        return { success: true, newArticlesCount: newNewsArticles.length };
+      } catch (error) {
+        console.error(
+          `Error fetching news for job ${job.id}: ${error.message}`
+        );
+        // Handle the error gracefully, so the worker can continue processing new jobs
+        return { success: false, error: error.message };
       }
+    },
+    { connection: redis }
+  );
 
-      // Return the result of the job
-      return { success: true, newArticlesCount: newNewsArticles.length };
-    } catch (error) {
-      console.error("Error fetching news:", error);
-      throw error; // Rethrow the error to mark the job as failed
-    }
-  },
-  {
-    connection: redis,
-  }
-);
+  // Listen for 'completed' events to log job status
+  movieFetcherWorker.on("completed", (job) => {
+    console.log(`Job ${job.id} completed with result:`, job.returnvalue);
+  });
 
-export default movieFetcherWorker;
+  // Listen for 'failed' events to log job failures
+  movieFetcherWorker.on("failed", (job, err) => {
+    console.error(`Job ${job.id} failed with error: ${err.message}`);
+  });
+
+  console.log("movieFetcherWorker is running...");
+}
+
+export default startMovieFetcherWorker;

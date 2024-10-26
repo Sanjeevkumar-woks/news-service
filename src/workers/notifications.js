@@ -11,6 +11,9 @@ const __dirname = dirname(__filename);
 
 const emailNotification = async (newNews) => {
   // Limit the number of news articles to the first 5 unique articles
+  console.log(
+    `Attempting to send email notification for ${newNews.length} newNews`
+  );
   const uniqueNews = _.uniqBy(newNews, "article_id");
   const limitedNews = uniqueNews.slice(0, 5);
 
@@ -57,8 +60,6 @@ const emailNotification = async (newNews) => {
         },
       },
     ]);
-
-    console.log(users, "users");
 
     if (users.length === 0) {
       console.log("No users found with the specified criteria.");

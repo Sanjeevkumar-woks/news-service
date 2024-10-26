@@ -3,7 +3,7 @@ import { dbConnect } from "./connectors/dbConnect.js";
 import { connectToRedis } from "./connectors/redisConnect.js";
 import dotenv from "dotenv";
 import movieFetcherScheduler from "./schedulers/movieFetcherScheduler.js";
-
+import { startWorkers } from "./workers/index.js";
 dotenv.config();
 
 const mongoUrl = process.env.MONGO_URI;
@@ -16,8 +16,9 @@ try {
     console.log(`Server is running on port ${port}`);
 
     try {
-      // await connectToRedis();
-      // await movieFetcherScheduler();
+      await connectToRedis();
+      await movieFetcherScheduler();
+      await startWorkers();
     } catch (redisError) {
       console.error(`Error connecting to Redis: ${redisError}`);
     }
