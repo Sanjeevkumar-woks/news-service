@@ -1,6 +1,6 @@
 import nodeMailer from "nodemailer";
 
-const sendMail = ({ sender, receiver, htmlContent }) => {
+const sendMail = ({ sender, receiver, htmlContent, subject }) => {
   const transporter = nodeMailer.createTransport({
     service: process.env.MAIL_SERVICE,
     auth: {
@@ -12,7 +12,7 @@ const sendMail = ({ sender, receiver, htmlContent }) => {
   const mailOptions = {
     from: sender,
     to: receiver,
-    subject: "New News Articles",
+    subject: subject || "New News Articles",
     html: htmlContent,
   };
 

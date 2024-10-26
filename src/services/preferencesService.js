@@ -58,4 +58,39 @@ export default class PreferencesService {
 
     return preferences;
   }
+
+  static async getUsersByPreferences(newsCategories) {
+    console.log(newsCategories, "newsCategories from service");
+    const users = await Preferences.aggregate([
+      {
+        $match: {
+          categories: { $in: newsCategories },
+          email_frequency: "immediately",
+        },
+      },
+      {
+        $addFields: {
+          userId: { $toObjectId: "$user_id" },
+        },
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "userId",
+          foreignField: "_id",
+          as: "userDetails",
+        },
+      },
+      { $unwind: "$userDetails" },
+      { $match: { "userDetails.is_active": true } },
+      {
+        $project: {
+          email: "$userDetails.email",
+          username: "$userDetails.username",
+        },
+      },
+    ]);
+    console.log(users.length, "users from service");
+    return users;
+  }
 }
