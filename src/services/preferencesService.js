@@ -1,5 +1,22 @@
 import Preferences from "../models/preferences.js";
 
+import NodeCache from "node-cache";
+
+const cache = new NodeCache({ stdTTL: 600 }); // 10 minutes TTL
+
+export async function getUsersByPreferences(categories) {
+  const cacheKey = `users_${categories.sort().join("_")}`;
+  const cachedUsers = cache.get(cacheKey);
+
+  if (cachedUsers) {
+    return cachedUsers;
+  }
+
+  const users = await fetchUsersFromDatabase(categories);
+  cache.set(cacheKey, users);
+  return users;
+}
+
 export default class PreferencesService {
   static async createPreferences({
     user_id,
@@ -60,7 +77,12 @@ export default class PreferencesService {
   }
 
   static async getUsersByPreferences(newsCategories) {
-    console.log(newsCategories, "newsCategories from service");
+    const cacheKey = `users_${newsCategories.sort().join("_")}`;
+    const cachedUsers = cache.get(cacheKey);
+
+    if (cachedUsers) {
+      return cachedUsers;
+    }
     const users = await Preferences.aggregate([
       {
         $match: {
@@ -87,9 +109,11 @@ export default class PreferencesService {
         $project: {
           email: "$userDetails.email",
           username: "$userDetails.username",
+          user_id: "$user_id",
         },
       },
     ]);
+    cache.set(cacheKey, users);
     console.log(users.length, "users from service");
     return users;
   }

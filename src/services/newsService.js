@@ -1,6 +1,6 @@
 import axios from "axios";
-import OldNewsArticle from "../models/oldNewsModel.js";
 import NewsArticle from "../models/newsModel.js";
+import _ from "lodash";
 
 export default class newsService {
   static async getNews(params) {
@@ -31,21 +31,18 @@ export default class newsService {
     );
     const fetchedArticles = response.data.results || [];
 
-    const existingArticleIds = await NewsArticle.find(
-      {},
-      { article_id: 1 }
-    ).lean();
-    const existingArticleIdSet = new Set(
-      existingArticleIds.map((article) => article.article_id)
-    );
+    //get unique articles by article_id and title  using lodash
+    const uniqueArticles = _.uniqBy(fetchedArticles, "article_id");
 
-    const newNewsArticles = fetchedArticles.filter(
+    const existingArticleIds = await NewsArticle.distinct("article_id");
+    const existingArticleIdSet = new Set(existingArticleIds);
+
+    const newNewsArticles = uniqueArticles.filter(
       (article) => !existingArticleIdSet.has(article.article_id)
     );
 
     if (newNewsArticles.length > 0) {
       await NewsArticle.insertMany(newNewsArticles);
-      await OldNewsArticle.insertMany(newNewsArticles);
       console.log("News fetched and saved successfully.");
     }
 

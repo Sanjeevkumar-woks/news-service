@@ -12,14 +12,13 @@ const movieFetcherScheduler = async () => {
     {},
     {
       repeat: {
-        every: 1000 * 60 * 60 * 60, // 1hr
+        every: 1000 * 60 * 10, //every 10 minutes
       },
       removeOnComplete: true,
       removeOnFail: true,
     }
   );
-
-  console.log("Scheduled email job added to the queue.");
+  console.log("Scheduled movies fetch job added to the queue.");
 };
 
 export default movieFetcherScheduler;

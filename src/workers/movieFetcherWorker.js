@@ -4,6 +4,7 @@ import sendNotifications from "./sendNotifications.js";
 
 import dotenv from "dotenv";
 import newsService from "../services/newsService.js";
+import logger from "../utils/logger.js";
 
 dotenv.config();
 
@@ -16,35 +17,63 @@ export async function startMovieFetcherWorker() {
   const movieFetcherWorker = new Worker(
     "moviesFetchQueue",
     async (job) => {
-      console.log(`Job ${job.id} started`);
+      console.log("movie fetcher worker started");
+      logger.info(`Job ${job.id} started movie fetcher worker`);
       try {
         const newArticles = await newsService.fetchAndSaveArticles();
+        console.log(newArticles, "newArticles");
 
         if (newArticles.length > 0) {
           await sendNotifications(newArticles);
-          console.log("New articles email sent successfully.");
+          logger.info("New articles email sent successfully.");
         } else {
-          console.log("No new articles found.");
+          logger.info("No new articles found.");
         }
 
         return { success: true, newArticlesCount: newArticles.length };
       } catch (error) {
-        console.error(`Error in job ${job.id}: ${error.message}`);
-        return { success: false, error: error.message };
+        logger.error(
+          `Error in job ${job.id}: ${error.message} ,"Error in Movie fetcher worker"`
+        );
+        if (error.name === "NetworkError") {
+          logger.info("Network error in movie fetcher worker");
+          // Handle network-related errors
+          return { success: false, error: "Network error", retryable: true };
+        } else if (error.name === "ValidationError") {
+          logger.info("Data validation error in movie fetcher worker");
+          // Handle data validation errors
+          return {
+            success: false,
+            error: "Data validation error",
+            retryable: false,
+          };
+        }
+        // Handle other types of errors
+        return { success: false, error: error.message, retryable: true };
       }
     },
     { connection: redis, backoffStrategies: { exponential: true } }
   );
 
+  process.on("SIGTERM", async () => {
+    logger.info("SIGTERM received, closing worker");
+    await movieFetcherWorker.close();
+  });
+
   movieFetcherWorker.on("completed", (job) => {
-    console.log(`Job ${job.id} completed with result:`, job.returnvalue);
+    logger.info(
+      `Job ${job.id} movie-fetcher-worker completed with result:`,
+      job.returnvalue
+    );
   });
 
   movieFetcherWorker.on("failed", (job, err) => {
-    console.error(`Job ${job.id} failed with error: ${err.message}`);
+    logger.error(
+      `Job ${job.id} movie-fetcher-worker failed with error: ${err.message}`
+    );
   });
 
-  console.log("movieFetcherWorker is running...");
+  logger.info("movieFetcherWorker is running...");
 }
 
 export default startMovieFetcherWorker;

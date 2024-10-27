@@ -1,4 +1,4 @@
-import UserService from "../services/userService.js";
+import UserService from "../services/usersService.js";
 import { validateJoiSchema } from "../utils/validateSchema.js";
 import Joi from "joi";
 
