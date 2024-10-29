@@ -16,6 +16,7 @@ const SENDER_EMAIL = process.env.SENDER_EMAIL;
 const NEWS_LIMIT = process.env.NEWS_LIMIT;
 
 export const sendNotifications = async (newNews) => {
+  console.log(newNews, "newNews");
   const uniqueNews = _.uniqBy(newNews, "article_id");
   const limitedNews = uniqueNews.slice(0, NEWS_LIMIT);
   const newsCategories = _.uniq(limitedNews.flatMap((news) => news.category));

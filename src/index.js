@@ -4,6 +4,7 @@ import { connectToRedis } from "./connectors/redisConnect.js";
 import dotenv from "dotenv";
 import movieFetcherScheduler from "./schedulers/movieFetcherScheduler.js";
 import { startWorkers } from "./workers/index.js";
+import everyMinuteScheduler from "./schedulers/eveyDayScheduler.js";
 dotenv.config();
 
 const mongoUrl = process.env.MONGO_URI;
@@ -17,6 +18,7 @@ try {
 
     try {
       await connectToRedis();
+      everyMinuteScheduler();
       await movieFetcherScheduler();
       await startWorkers();
     } catch (redisError) {

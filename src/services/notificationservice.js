@@ -1,10 +1,14 @@
+import Notification from "../models/notificationsModel.js";
+
 export class NotificationService {
   static async getNotificationByUser(user_id) {
     return Notification.find(
       { user_id },
-      //last 10 notifications
+      //latest 10 notifications
       {
-        sort: { createdAt: -1 },
+        sort: {
+          createdAt: -1,
+        },
         limit: 10,
       }
     );
@@ -14,3 +18,5 @@ export class NotificationService {
     return Notification.find();
   }
 }
+
+export default NotificationService;

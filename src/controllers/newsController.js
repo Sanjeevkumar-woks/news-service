@@ -1,14 +1,16 @@
+import mongoose, { Mongoose } from "mongoose";
 import OldNewsArticle from "../models/oldNewsModel.js";
 import newsService from "../services/newsService.js";
 import { validateJoiSchema } from "../utils/validateSchema.js";
+import Joi from "joi";
 
 const getNews = async (req, res) => {
   const validationError = validateJoiSchema({
     schema: Joi.object({
       category: Joi.string().optional(),
       country: Joi.string().optional(),
-      page: Joi.number().optional(),
-      pageSize: Joi.number().optional(),
+      page: Joi.number().required(),
+      pageSize: Joi.number().required(),
       sort: Joi.string().optional(),
       search: Joi.string().optional(),
     }),
@@ -38,7 +40,9 @@ const getNewsById = async (req, res) => {
     return res.status(400).json({ error: validationError });
   }
 
-  const news = await newsService.getNewsById(id);
+  const news = await newsService.getNewsById({
+    article_id: id,
+  });
 
   res.status(200).json({
     news,

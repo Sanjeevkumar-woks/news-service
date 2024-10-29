@@ -23,12 +23,12 @@ export async function startMovieFetcherWorker() {
         const newArticles = await newsService.fetchAndSaveArticles();
         console.log(newArticles, "newArticles");
 
-        if (newArticles.length > 0) {
-          await sendNotifications(newArticles);
-          logger.info("New articles email sent successfully.");
-        } else {
-          logger.info("No new articles found.");
-        }
+        // if (newArticles.length > 0) {
+        //   await sendNotifications(newArticles);
+        //   logger.info("New articles email sent successfully.");
+        // } else {
+        //   logger.info("No new articles found.");
+        // }
 
         return { success: true, newArticlesCount: newArticles.length };
       } catch (error) {

@@ -1,4 +1,5 @@
-import Notification from "../models/notificationsModel";
+import Notification from "../models/notificationsModel.js";
+import NotificationService from "../services/notificationservice.js";
 
 const getAllNotifications = async (req, res) => {
   const notifications = await Notification.find();
@@ -7,8 +8,10 @@ const getAllNotifications = async (req, res) => {
 
 const getNotificationByUser = async (req, res) => {
   const { user_id } = req.params;
-  const notifications = NotificationServer.getNotificationByUser(user_id);
+  const notifications = await NotificationService.getNotificationByUser(
+    user_id
+  );
   res.status(200).json(notifications);
 };
 
-export default { getAllNotifications, getNotificationByUser };
+export { getAllNotifications, getNotificationByUser };
