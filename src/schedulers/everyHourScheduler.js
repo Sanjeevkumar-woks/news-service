@@ -17,25 +17,24 @@ dotenv.config();
 
 const SENDER_EMAIL = process.env.SENDER_EMAIL;
 
-export const everyDayScheduler = () => {
+export const everyHourScheduler = () => {
   cron.schedule("0 0 * * *", async () => {
-    console.info("everyDayScheduler started");
-
-    //fetch news articles with createdAt greater than 24 hours and limit 10
+    console.info("everyHourScheduler started.");
+    //fetch news articles with createdAt greater than 1 hours and limit 10
     const newsArticles = await NewsArticle.find({
       createdAt: {
-        $gt: new Date(Date.now() - 24 * 60 * 60 * 1000),
+        $gt: new Date(Date.now() - 60 * 60 * 1000),
       },
     }).limit(10);
 
-    const categories = newsArticles.map((article) => article.category);
+    const categories = newsArticles.flatMap((article) => article.category);
     const uniqueCategories = _.uniq(categories);
 
     //fetch users by preferences with categories in uniqueCategories and email_frequency is "daily"
 
     const users = await PreferencesService.getUsersByPreferences(
       uniqueCategories,
-      "daily"
+      "hourly"
     );
 
     if (users.length === 0) {

@@ -4,39 +4,43 @@ import notificationQueue from "../queues/notificationQueue.js";
 import mailQueue from "../queues/mailQueue.js";
 import PreferencesService from "../services/preferencesService.js";
 import path from "path";
-import ejs from "ejs";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import ejs from "ejs";
 import _ from "lodash";
 import logger from "../utils/logger.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 import dotenv from "dotenv";
+
 dotenv.config();
 
 const SENDER_EMAIL = process.env.SENDER_EMAIL;
 
-export const everyDayScheduler = () => {
-  cron.schedule("0 0 * * *", async () => {
-    console.info("everyDayScheduler started");
+export const everyTenMinScheduler = () => {
+  cron.schedule("*/10 * * * *", async () => {
+    console.info("everyTenMinScheduler started");
 
-    //fetch news articles with createdAt greater than 24 hours and limit 10
+    //fetch news articles with createdAt greater than 10 minutes and limit 10
     const newsArticles = await NewsArticle.find({
       createdAt: {
-        $gt: new Date(Date.now() - 24 * 60 * 60 * 1000),
+        $gt: new Date(Date.now() - 10 * 60 * 1000),
       },
     }).limit(10);
 
-    const categories = newsArticles.map((article) => article.category);
-    const uniqueCategories = _.uniq(categories);
+    const categories = newsArticles.flatMap((article) => article.category);
+
+    const uniqueCategories = [...new Set(categories)];
 
     //fetch users by preferences with categories in uniqueCategories and email_frequency is "daily"
 
     const users = await PreferencesService.getUsersByPreferences(
       uniqueCategories,
-      "daily"
+      "immediately"
     );
+
+    console.log(users, "users");
 
     if (users.length === 0) {
       logger.info("No users found with the specified criteria.");

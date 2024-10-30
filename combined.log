@@ -1749,3 +1749,106 @@
 {"level":"info","message":"Job repeat:ea25043cd9e063aebb2775100027dc5a:1730219838203 started movie fetcher worker","timestamp":"2024-10-29T16:37:18.490Z"}
 {"level":"error","message":"Error in job repeat:ea25043cd9e063aebb2775100027dc5a:1730219838203: Request failed with status code 429 ,\"Error in Movie fetcher worker\"","timestamp":"2024-10-29T16:37:19.213Z"}
 {"error":"Request failed with status code 429","level":"info","message":"Job repeat:ea25043cd9e063aebb2775100027dc5a:1730219838203 movie-fetcher-worker completed with result:","retryable":true,"success":false,"timestamp":"2024-10-29T16:37:19.275Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:15:31.924Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:15:31.931Z"}
+{"level":"info","message":"Notification worker stopped","timestamp":"2024-10-30T13:15:31.931Z"}
+{"level":"info","message":"Job repeat:ea25043cd9e063aebb2775100027dc5a:1730294160000 started movie fetcher worker","timestamp":"2024-10-30T13:16:00.306Z"}
+{"level":"info","message":"Job repeat:ea25043cd9e063aebb2775100027dc5a:1730294160000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T13:16:01.760Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:25:50.343Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:25:50.348Z"}
+{"level":"info","message":"Notification worker stopped","timestamp":"2024-10-30T13:25:50.348Z"}
+{"level":"info","message":"Job repeat:ea25043cd9e063aebb2775100027dc5a:1730294760000 started movie fetcher worker","timestamp":"2024-10-30T13:26:00.401Z"}
+{"level":"info","message":"Job repeat:ea25043cd9e063aebb2775100027dc5a:1730294760000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T13:26:01.701Z"}
+{"level":"info","message":"Job repeat:ea25043cd9e063aebb2775100027dc5a:1730294820000 started movie fetcher worker","timestamp":"2024-10-30T13:27:00.247Z"}
+{"level":"info","message":"Job repeat:ea25043cd9e063aebb2775100027dc5a:1730294820000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T13:27:01.536Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:27:47.325Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:27:47.331Z"}
+{"level":"info","message":"Notification worker stopped","timestamp":"2024-10-30T13:27:47.332Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730295000000 started movie fetcher worker","timestamp":"2024-10-30T13:30:00.326Z"}
+{"level":"info","message":"No users found with the specified criteria.","timestamp":"2024-10-30T13:30:00.858Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730295000000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T13:30:02.067Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:30:50.743Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:30:50.764Z"}
+{"level":"info","message":"Notification worker stopped","timestamp":"2024-10-30T13:30:50.765Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:31:19.610Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:31:19.630Z"}
+{"level":"info","message":"Notification worker stopped","timestamp":"2024-10-30T13:31:19.631Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:32:17.736Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:32:17.749Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:33:25.224Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:33:25.246Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:33:47.544Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:33:47.567Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:34:25.996Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:34:26.004Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730295300000 started movie fetcher worker","timestamp":"2024-10-30T13:35:00.305Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730295300000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T13:35:01.682Z"}
+{"level":"info","message":"No users found with the specified criteria.","timestamp":"2024-10-30T13:40:00.358Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730295600000 started movie fetcher worker","timestamp":"2024-10-30T13:40:00.399Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730295600000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T13:40:01.917Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:41:33.292Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:41:33.304Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:42:19.788Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:42:19.805Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:44:53.129Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:44:53.150Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730295900000 started movie fetcher worker","timestamp":"2024-10-30T13:45:00.478Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730295900000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T13:45:01.860Z"}
+{"level":"info","message":"No users found with the specified criteria.","timestamp":"2024-10-30T13:50:00.723Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730296200000 started movie fetcher worker","timestamp":"2024-10-30T13:50:00.740Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730296200000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T13:50:03.009Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:51:36.182Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:51:36.204Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:54:18.860Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:54:18.881Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730296500000 started movie fetcher worker","timestamp":"2024-10-30T13:55:00.568Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730296500000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T13:55:01.955Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:58:05.302Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:58:05.315Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T13:58:19.294Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T13:58:19.299Z"}
+{"level":"info","message":"No users found with the specified criteria.","timestamp":"2024-10-30T13:59:00.869Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730296800000 started movie fetcher worker","timestamp":"2024-10-30T14:00:00.345Z"}
+{"level":"info","message":"No users found with the specified criteria.","timestamp":"2024-10-30T14:00:00.510Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730296800000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T14:00:01.854Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T14:02:30.706Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T14:02:30.715Z"}
+{"level":"info","message":"No email users found with the specified criteria.","timestamp":"2024-10-30T14:03:01.199Z"}
+{"level":"info","message":"No email users found with the specified criteria.","timestamp":"2024-10-30T14:04:00.801Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T14:04:11.632Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T14:04:11.644Z"}
+{"level":"info","message":"No email users found with the specified criteria.","timestamp":"2024-10-30T14:05:00.266Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730297100000 started movie fetcher worker","timestamp":"2024-10-30T14:05:00.415Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730297100000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T14:05:01.699Z"}
+{"level":"info","message":"No email users found with the specified criteria.","timestamp":"2024-10-30T14:06:00.893Z"}
+{"level":"info","message":"No email users found with the specified criteria.","timestamp":"2024-10-30T14:07:00.487Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T14:07:18.663Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T14:07:18.668Z"}
+{"level":"info","message":"No email users found with the specified criteria.","timestamp":"2024-10-30T14:08:00.262Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T14:09:11.246Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T14:09:11.251Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730297400000 started movie fetcher worker","timestamp":"2024-10-30T14:10:00.278Z"}
+{"level":"info","message":"No sms users found with the specified criteria.","timestamp":"2024-10-30T14:10:00.953Z"}
+{"level":"info","message":"Job 151 mail-worker started","timestamp":"2024-10-30T14:10:01.108Z"}
+{"level":"info","message":"Job 151 mail-worker completed","timestamp":"2024-10-30T14:10:01.178Z"}
+{"level":"info","message":"Job 152 mail-worker started","timestamp":"2024-10-30T14:10:01.180Z"}
+{"level":"info","message":"Job 152 mail-worker completed","timestamp":"2024-10-30T14:10:01.243Z"}
+{"level":"info","message":"Job 153 mail-worker started","timestamp":"2024-10-30T14:10:01.244Z"}
+{"level":"info","message":"Job 153 mail-worker completed","timestamp":"2024-10-30T14:10:01.297Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730297400000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T14:10:01.681Z"}
+{"level":"info","message":"No sms users found with the specified criteria.","timestamp":"2024-10-30T14:11:00.495Z"}
+{"level":"info","message":"Job 154 mail-worker started","timestamp":"2024-10-30T14:11:00.602Z"}
+{"level":"info","message":"Job 154 mail-worker completed","timestamp":"2024-10-30T14:11:00.658Z"}
+{"level":"info","message":"Job 155 mail-worker started","timestamp":"2024-10-30T14:11:00.660Z"}
+{"level":"info","message":"Job 155 mail-worker completed","timestamp":"2024-10-30T14:11:00.715Z"}
+{"level":"info","message":"Job 156 mail-worker started","timestamp":"2024-10-30T14:11:00.716Z"}
+{"level":"info","message":"Job 156 mail-worker completed","timestamp":"2024-10-30T14:11:00.772Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T14:13:28.040Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T14:13:28.045Z"}
+{"level":"info","message":"No sms users found with the specified criteria.","timestamp":"2024-10-30T14:14:00.555Z"}
+{"level":"info","message":"Job 157 mail-worker started","timestamp":"2024-10-30T14:14:00.724Z"}
+{"level":"info","message":"Job 157 mail-worker completed","timestamp":"2024-10-30T14:14:00.794Z"}
+{"level":"info","message":"Job 158 mail-worker started","timestamp":"2024-10-30T14:14:00.795Z"}
+{"level":"info","message":"Job 158 mail-worker completed","timestamp":"2024-10-30T14:14:00.850Z"}
+{"level":"info","message":"Job 159 mail-worker started","timestamp":"2024-10-30T14:14:00.852Z"}
+{"level":"info","message":"Job 159 mail-worker completed","timestamp":"2024-10-30T14:14:00.906Z"}

@@ -1,6 +1,6 @@
+import startMailWorker from "./mailWorker.js";
 import startMovieFetcherWorker from "./movieFetcherWorker.js";
 import startNotificationWorker from "./notificationWorker.js";
-import startMailWorker from "./mailWorker.js";
 
 export async function startWorkers() {
   console.log("starting workers");

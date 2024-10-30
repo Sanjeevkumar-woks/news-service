@@ -79,8 +79,6 @@ export const startNotificationWorker = async () => {
   notificationWorker.on("failed", (job, err) => {
     logger.error(`Job ${job.id} notification-worker failed: ${err.message}`);
   });
-
-  logger.info("Notification worker stopped");
 };
 
 export default startNotificationWorker;

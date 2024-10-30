@@ -12,7 +12,7 @@ const movieFetcherScheduler = async () => {
     {},
     {
       repeat: {
-        every: 1000 * 60, //every 1 minute
+        every: 1000 * 60 * 5, //every 5 minute
       },
       removeOnComplete: true,
       removeOnFail: true,

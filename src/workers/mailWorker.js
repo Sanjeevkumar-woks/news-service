@@ -38,7 +38,11 @@ const startMailWorker = async () => {
         return { success: false, error: error.message, retryable: true };
       }
     },
-    { connection: redis, backoffStrategies: { exponential: true } }
+    {
+      connection: redis,
+      attempts: 3, // Number of retry attempts
+      backoff: { type: "exponential", delay: 1000 },
+    }
   );
 
   process.on("SIGTERM", async () => {

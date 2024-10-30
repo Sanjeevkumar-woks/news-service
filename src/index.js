@@ -4,7 +4,10 @@ import { connectToRedis } from "./connectors/redisConnect.js";
 import dotenv from "dotenv";
 import movieFetcherScheduler from "./schedulers/movieFetcherScheduler.js";
 import { startWorkers } from "./workers/index.js";
-import everyMinuteScheduler from "./schedulers/eveyDayScheduler.js";
+import { everyDayScheduler } from "./schedulers/eveyDayScheduler.js";
+import { everyHourScheduler } from "./schedulers/everyHourScheduler.js";
+import { everyTenMinScheduler } from "./schedulers/everyTenMinScheduler.js";
+
 dotenv.config();
 
 const mongoUrl = process.env.MONGO_URI;
@@ -17,10 +20,12 @@ try {
     console.log(`Server is running on port ${port}`);
 
     try {
-      // await connectToRedis();
-      // await everyMinuteScheduler();
-      // await movieFetcherScheduler();
-      // await startWorkers();
+      await connectToRedis();
+      await movieFetcherScheduler();
+      await everyTenMinScheduler();
+      await everyHourScheduler();
+      await everyDayScheduler();
+      await startWorkers();
     } catch (redisError) {
       console.error(`Error connecting to Redis: ${redisError}`);
     }

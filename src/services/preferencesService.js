@@ -26,6 +26,10 @@ export default class PreferencesService {
       categories,
     });
 
+    if (!preferences) {
+      return { message: "Preferences not created" };
+    }
+
     return { message: "Preferences created successfully" };
   }
 
@@ -57,12 +61,13 @@ export default class PreferencesService {
     return preferences;
   }
 
-  static async getUsersByPreferences(newsCategories) {
+  static async getUsersByPreferences(newsCategories, email_frequency) {
+    console.log(newsCategories, email_frequency, "from service");
     const users = await Preferences.aggregate([
       {
         $match: {
           categories: { $in: newsCategories },
-          email_frequency: "immediately",
+          email_frequency: email_frequency,
         },
       },
       {
@@ -84,6 +89,7 @@ export default class PreferencesService {
           email: "$userDetails.emailId",
           username: "$userDetails.username",
           user_id: "$user_id",
+          notification_type: "$notification_type",
         },
       },
     ]);
