@@ -6,10 +6,13 @@ const preferencesRoutes = Router();
 
 preferencesRoutes.post("/create", preferenceController.createPreferences);
 
-preferencesRoutes.put("/update", preferenceController.updatePreferences);
+preferencesRoutes.put(
+  "/update/:preferences_id",
+  preferenceController.updatePreferences
+);
 
 preferencesRoutes.delete("/delete", preferenceController.deletePreferences);
 
-preferencesRoutes.get("/get", preferenceController.getPreferences);
+preferencesRoutes.get("/get/:user_id", preferenceController.getPreferences);
 
 export default preferencesRoutes;

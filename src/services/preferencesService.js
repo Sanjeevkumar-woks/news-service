@@ -1,21 +1,9 @@
+import mongoose from "mongoose";
 import Preferences from "../models/preferences.js";
 
 import NodeCache from "node-cache";
 
 const cache = new NodeCache({ stdTTL: 600 }); // 10 minutes TTL
-
-export async function getUsersByPreferences(categories) {
-  const cacheKey = `users_${categories.sort().join("_")}`;
-  const cachedUsers = cache.get(cacheKey);
-
-  if (cachedUsers) {
-    return cachedUsers;
-  }
-
-  const users = await fetchUsersFromDatabase(categories);
-  cache.set(cacheKey, users);
-  return users;
-}
 
 export default class PreferencesService {
   static async createPreferences({
@@ -28,7 +16,7 @@ export default class PreferencesService {
     const existingPreferences = await Preferences.findOne({ user_id });
 
     if (existingPreferences) {
-      throw new Error("Preferences already exists");
+      return { message: "Preferences already exists" };
     }
 
     const preferences = await Preferences.create({
@@ -38,17 +26,18 @@ export default class PreferencesService {
       categories,
     });
 
-    return preferences;
+    return { message: "Preferences created successfully" };
   }
 
   static async updatePreferences({
+    preferences_id,
     user_id,
     email_frequency,
     notification_type,
     categories,
   }) {
     const preferences = await Preferences.findOneAndUpdate(
-      { user_id },
+      { _id: preferences_id },
       { email_frequency, notification_type, categories },
       { new: true }
     );
@@ -59,30 +48,16 @@ export default class PreferencesService {
   static async deletePreferences({ user_id }) {
     const preferences = await Preferences.findOneAndDelete({ user_id });
 
-    if (!preferences) {
-      throw new Error("Preferences not found");
-    }
-
-    return preferences;
+    return preferences || null;
   }
 
   static async getPreferences({ user_id }) {
     const preferences = await Preferences.findOne({ user_id });
 
-    if (!preferences) {
-      throw new Error("Preferences not found");
-    }
-
     return preferences;
   }
 
   static async getUsersByPreferences(newsCategories) {
-    const cacheKey = `users_${newsCategories.sort().join("_")}`;
-    const cachedUsers = cache.get(cacheKey);
-
-    if (cachedUsers) {
-      return cachedUsers;
-    }
     const users = await Preferences.aggregate([
       {
         $match: {
@@ -97,23 +72,22 @@ export default class PreferencesService {
       },
       {
         $lookup: {
-          from: "users",
+          from: "Users",
           localField: "userId",
           foreignField: "_id",
           as: "userDetails",
         },
       },
       { $unwind: "$userDetails" },
-      { $match: { "userDetails.is_active": true } },
       {
         $project: {
-          email: "$userDetails.email",
+          email: "$userDetails.emailId",
           username: "$userDetails.username",
           user_id: "$user_id",
         },
       },
     ]);
-    cache.set(cacheKey, users);
+
     console.log(users.length, "users from service");
     return users;
   }

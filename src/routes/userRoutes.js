@@ -1,10 +1,16 @@
-import Router from "express";
-import * as userController from "../controllers/userControllers.js";
+import { Router } from "express";
+
+import { UserControllers } from "../controllers/userController.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
 
 const userRoutes = Router();
 
-userRoutes.post("/signup", userController.signup);
-userRoutes.post("/login", userController.login);
-userRoutes.get("/profile/:user_id", userController.getProfile);
+// Get users Route only id authenticated
+//Check authentication by passing the auth middleware
+userRoutes.get("/getUserById", authMiddleware, UserControllers.getUserById);
+
+//Get all users only if user is Authenticated
+//Check authentication by passing the auth middleware
+userRoutes.get("/getAllUsers", authMiddleware, UserControllers.getAllUsers);
 
 export default userRoutes;

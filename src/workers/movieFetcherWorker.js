@@ -21,7 +21,6 @@ export async function startMovieFetcherWorker() {
       logger.info(`Job ${job.id} started movie fetcher worker`);
       try {
         const newArticles = await newsService.fetchAndSaveArticles();
-        console.log(newArticles, "newArticles");
 
         // if (newArticles.length > 0) {
         //   await sendNotifications(newArticles);

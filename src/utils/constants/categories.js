@@ -1,5 +1,5 @@
 const categoriesEnum = [
-  " business",
+  "business",
   "crime",
   "domestic",
   "education",

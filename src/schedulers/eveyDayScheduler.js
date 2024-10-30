@@ -20,7 +20,7 @@ const everyMinuteScheduler = () => {
     if (latestArticles.length > 0) {
       await sendNotifications(latestArticles);
     }
-  }, 600000); // Run every 600 seconds (10 minutes)
+  }, 60000); // Run every 600 seconds (10 minutes)
 };
 
 export default everyMinuteScheduler;

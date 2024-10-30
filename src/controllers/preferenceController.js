@@ -6,9 +6,12 @@ import {
 } from "../utils/constants/common.js";
 import { categoriesEnum } from "../utils/constants/categories.js";
 import preferencesService from "../services/preferencesService.js";
+import PreferencesService from "../services/preferencesService.js";
 
 const createPreferences = async (req, res) => {
   const { user_id, email_frequency, notification_type, categories } = req.body;
+
+  console.log(categories);
 
   const validationError = validateJoiSchema({
     schema: Joi.object({
@@ -38,13 +41,12 @@ const createPreferences = async (req, res) => {
     categories,
   });
 
-  res.status(201).json({
-    message: "Preferences created successfully",
-    preferences,
-  });
+  res.status(200).json(preferences);
 };
 
 const updatePreferences = async (req, res) => {
+  const { preferences_id } = req.params;
+
   const { user_id, email_frequency, notification_type, categories } = req.body;
 
   const validationError = validateJoiSchema({
@@ -69,6 +71,7 @@ const updatePreferences = async (req, res) => {
   }
 
   const preferences = await preferencesService.updatePreferences({
+    preferences_id,
     user_id,
     email_frequency,
     notification_type,
@@ -113,7 +116,11 @@ const getPreferences = async (req, res) => {
     return res.status(400).json({ error: validationError });
   }
 
-  const preferences = await preferencesService.getPreferences(user_id);
+  const preferences = await preferencesService.getPreferences({ user_id });
+
+  if (!preferences) {
+    return res.status(404).json({ error: "Preferences not found" });
+  }
 
   res.status(200).json({ preferences });
 };
