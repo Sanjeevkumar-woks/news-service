@@ -1,18 +1,10 @@
 import { Worker } from "bullmq";
 import _ from "lodash";
-import sendNotifications from "./sendNotifications.js";
-
-import dotenv from "dotenv";
 import newsService from "../services/newsService.js";
 import logger from "../utils/logger.js";
+import { getRedisClient } from "../connectors/redisConnect.js";
 
-dotenv.config();
-
-const redis = {
-  host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT,
-  password: process.env.REDIS_PASSWORD,
-};
+const redis = getRedisClient();
 export async function startMovieFetcherWorker() {
   const movieFetcherWorker = new Worker(
     "moviesFetchQueue",

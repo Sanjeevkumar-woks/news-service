@@ -1,16 +1,10 @@
 import { Worker } from "bullmq";
 import NotificationModel from "../models/notificationsModel.js";
-import dotenv from "dotenv";
+import { getRedisClient } from "../connectors/redisConnect.js";
 import logger from "../utils/logger.js";
 import Joi from "joi";
 
-dotenv.config();
-
-const redis = {
-  host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT,
-  password: process.env.REDIS_PASSWORD,
-};
+const redis = getRedisClient();
 
 export const startNotificationWorker = async () => {
   logger.info("Notification worker started");
@@ -18,11 +12,9 @@ export const startNotificationWorker = async () => {
   const notificationWorker = new Worker(
     "notificationQueue",
     async (job) => {
-      logger.info(`Job ${job.id} started notification worker`);
+      logger.info(`Job ${job.id} started in notification worker`);
 
       const { notificationContent, user_id } = job.data;
-
-      //notificationContent is array of objects
 
       const notificationSchema = Joi.object({
         title: Joi.string().required(),
@@ -30,11 +22,14 @@ export const startNotificationWorker = async () => {
         link: Joi.string().uri().required(),
       });
 
+      let notificationsCreated = 0;
+
       try {
-        notificationContent.forEach(async (notification) => {
+        for (const notification of notificationContent) {
           const { error } = notificationSchema.validate(notification);
           if (error) {
-            throw new Error(`Invalid notification data: ${error.message}`);
+            logger.warn(`Invalid notification data: ${error.message}`);
+            continue; // Skip this notification if validation fails
           }
           await NotificationModel.create({
             title: notification.title,
@@ -42,42 +37,43 @@ export const startNotificationWorker = async () => {
             link: notification.link,
             user_id,
           });
-        });
+          notificationsCreated++;
+        }
+
         return {
           success: true,
-          notificationsCount: notificationContent.length,
+          notificationsCount: notificationsCreated,
         };
       } catch (error) {
-        logger.error(
-          `Error in job ${job.id}: ${error.message} ,"Error in notification worker"`
-        );
-        if (error.name === "ValidationError") {
-          logger.info("validation error in notification worker");
-          // Handle data validation errors
-          return {
-            success: false,
-            error: "Data validation error",
-            retryable: false,
-          };
-        }
-        // Handle other types of errors
-        return { success: false, error: error.message, retryable: true };
+        logger.error(`Error in job ${job.id}: ${error.message}`);
+
+        return {
+          success: false,
+          error: error.message,
+          retryable: error.name !== "ValidationError", // Retry for non-validation errors
+        };
       }
     },
-    { connection: redis, backoffStrategies: { exponential: true } }
+    {
+      connection: redis,
+      backoff: {
+        type: "exponential",
+        delay: 1000, // Base delay in milliseconds
+      },
+    }
   );
 
   process.on("SIGTERM", async () => {
-    logger.info("SIGTERM received, closing worker");
+    logger.info("SIGTERM received, closing notification worker");
     await notificationWorker.close();
   });
 
   notificationWorker.on("completed", (job) => {
-    logger.info(`Job ${job.id} notification-worker completed`);
+    logger.info(`Job ${job.id} completed successfully in notification worker`);
   });
 
   notificationWorker.on("failed", (job, err) => {
-    logger.error(`Job ${job.id} notification-worker failed: ${err.message}`);
+    logger.error(`Job ${job.id} failed in notification worker: ${err.message}`);
   });
 };
 

@@ -21,8 +21,14 @@ const connectToRedis = async () => {
     connectionClient.disconnect();
   }
 };
+
+const redis = {
+  host: process.env.REDIS_HOST,
+  port: process.env.REDIS_PORT,
+  password: process.env.REDIS_PASSWORD,
+};
 const getRedisClient = () => {
-  return connectionClient;
+  return redis;
 };
 
 export { connectToRedis, getRedisClient };

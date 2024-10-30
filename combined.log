@@ -1852,3 +1852,29 @@
 {"level":"info","message":"Job 158 mail-worker completed","timestamp":"2024-10-30T14:14:00.850Z"}
 {"level":"info","message":"Job 159 mail-worker started","timestamp":"2024-10-30T14:14:00.852Z"}
 {"level":"info","message":"Job 159 mail-worker completed","timestamp":"2024-10-30T14:14:00.906Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T15:00:44.285Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T15:00:44.321Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730300700000 started movie fetcher worker","timestamp":"2024-10-30T15:05:00.476Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730300700000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T15:05:02.789Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730301000000 started movie fetcher worker","timestamp":"2024-10-30T15:10:00.594Z"}
+{"level":"info","message":"No email users found with the specified criteria.","timestamp":"2024-10-30T15:10:00.741Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730301000000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T15:10:01.889Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T15:11:57.973Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T15:11:57.996Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-30T15:22:11.908Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-30T15:22:11.912Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730301900000 started movie fetcher worker","timestamp":"2024-10-30T15:25:00.264Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730301900000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T15:25:24.370Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730302200000 started movie fetcher worker","timestamp":"2024-10-30T15:30:00.356Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-10-30T15:30:00.814Z"}
+{"level":"info","message":"Queued email notifications for 2 users.","timestamp":"2024-10-30T15:30:00.821Z"}
+{"level":"info","message":"Mail job 161 started.","timestamp":"2024-10-30T15:30:00.975Z"}
+{"level":"info","message":"Mail sent successfully for job 161 to sanjeevmanagutti@gmail.com","timestamp":"2024-10-30T15:30:00.990Z"}
+{"level":"info","message":"Mail job 161 completed successfully.","timestamp":"2024-10-30T15:30:01.098Z"}
+{"level":"info","message":"Mail job 162 started.","timestamp":"2024-10-30T15:30:01.099Z"}
+{"level":"info","message":"Mail sent successfully for job 162 to ankhonkasitara@gmail.com","timestamp":"2024-10-30T15:30:01.102Z"}
+{"level":"info","message":"Mail job 162 completed successfully.","timestamp":"2024-10-30T15:30:01.204Z"}
+{"level":"info","message":"Mail job 163 started.","timestamp":"2024-10-30T15:30:01.206Z"}
+{"level":"info","message":"Mail sent successfully for job 163 to ankhonkasitara+1@gmail.com","timestamp":"2024-10-30T15:30:01.208Z"}
+{"level":"info","message":"Mail job 163 completed successfully.","timestamp":"2024-10-30T15:30:01.261Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730302200000 movie-fetcher-worker completed with result:","newArticlesCount":10,"success":true,"timestamp":"2024-10-30T15:30:01.848Z"}

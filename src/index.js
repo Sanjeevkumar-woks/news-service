@@ -20,12 +20,12 @@ try {
     console.log(`Server is running on port ${port}`);
 
     try {
-      // await connectToRedis();
-      // await movieFetcherScheduler();
-      // await everyTenMinScheduler();
-      // await everyHourScheduler();
-      // await everyDayScheduler();
-      // await startWorkers();
+      await connectToRedis();
+      await movieFetcherScheduler();
+      await everyTenMinScheduler();
+      await everyHourScheduler();
+      await everyDayScheduler();
+      await startWorkers();
     } catch (redisError) {
       console.error(`Error connecting to Redis: ${redisError}`);
     }

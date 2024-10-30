@@ -1,13 +1,7 @@
 import { Queue } from "bullmq";
-import dotenv from "dotenv";
+import { getRedisClient } from "../connectors/redisConnect.js";
 
-dotenv.config();
-
-const redis = {
-  host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT,
-  password: process.env.REDIS_PASSWORD,
-};
+const redis = getRedisClient();
 
 const moviesFetchQueue = new Queue("moviesFetchQueue", {
   connection: redis,
