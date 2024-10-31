@@ -7,6 +7,7 @@ import { startWorkers } from "./workers/index.js";
 import { everyDayScheduler } from "./schedulers/eveyDayScheduler.js";
 import { everyHourScheduler } from "./schedulers/everyHourScheduler.js";
 import { everyTenMinScheduler } from "./schedulers/everyTenMinScheduler.js";
+import startMovieFetcherCronJob from "./schedulers/movieFetcher.js";
 
 dotenv.config();
 
@@ -19,15 +20,21 @@ try {
   app.listen(port, async () => {
     console.log(`Server is running on port ${port}`);
 
+    //try {
+    // await connectToRedis();
+    // await movieFetcherScheduler();
+    // await startWorkers();
+    // } catch (redisError) {
+    //   console.error(`Error connecting to Redis: ${redisError}`);
+    // }
+
     try {
-      // await connectToRedis();
-      // await movieFetcherScheduler();
-      // await everyTenMinScheduler();
-      // await everyHourScheduler();
-      // await everyDayScheduler();
-      // await startWorkers();
-    } catch (redisError) {
-      console.error(`Error connecting to Redis: ${redisError}`);
+      await startMovieFetcherCronJob();
+      await everyTenMinScheduler();
+      await everyHourScheduler();
+      await everyDayScheduler();
+    } catch (error) {
+      console.error(`Error in starting cron jobs: ${error.message}`);
     }
   });
 } catch (error) {

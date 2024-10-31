@@ -60,20 +60,29 @@ export const everyDayScheduler = () => {
           }
         );
 
-        emailUsers.forEach((user) => {
-          mailQueue.add(
-            "mailQueue",
-            {
-              sender: SENDER_EMAIL,
-              receiver: user.email,
-              subject: "Daily News",
-              htmlContent,
-            },
-            {
-              removeOnComplete: true,
-              removeOnFail: true,
-            }
-          );
+        // emailUsers.forEach((user) => {
+        //   mailQueue.add(
+        //     "mailQueue",
+        //     {
+        //       sender: SENDER_EMAIL,
+        //       receiver: user.email,
+        //       subject: "Daily News",
+        //       htmlContent,
+        //     },
+        //     {
+        //       removeOnComplete: true,
+        //       removeOnFail: true,
+        //     }
+        //   );
+        // });
+
+        emailUsers.forEach(async (user) => {
+          sendMail({
+            sender: SENDER_EMAIL,
+            receiver: user.email,
+            htmlContent,
+            subject: "Hourly News",
+          });
         });
         logger.info(
           `Queued email notifications for ${emailUsers.length} users.`
@@ -92,19 +101,30 @@ export const everyDayScheduler = () => {
           link: news.link,
         }));
 
-        pushUsers.forEach((user) => {
-          notificationQueue.add(
-            "notificationQueue",
-            {
-              notificationContent,
-              user_id: user._id,
-            },
-            {
-              removeOnComplete: true,
-              removeOnFail: true,
-            }
-          );
+        // pushUsers.forEach((user) => {
+        //   notificationQueue.add(
+        //     "notificationQueue",
+        //     {
+        //       notificationContent,
+        //       user_id: user._id,
+        //     },
+        //     {
+        //       removeOnComplete: true,
+        //       removeOnFail: true,
+        //     }
+        //   );
+        // });
+        pushUsers.forEach(async (user) => {
+          notificationContent.forEach((notification) => {
+            NotificationModel.create({
+              title: notification.title,
+              image_url: notification.image_url,
+              link: notification.link,
+              user_id: user.user_id,
+            });
+          });
         });
+
         logger.info(`Queued push notifications for ${pushUsers.length} users.`);
       }
     } catch (error) {

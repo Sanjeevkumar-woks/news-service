@@ -9,7 +9,8 @@ import { dirname } from "path";
 import ejs from "ejs";
 import logger from "../utils/logger.js";
 import dotenv from "dotenv";
-
+import NotificationModel from "../models/notificationsModel.js";
+import sendMail from "../utils/mail.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +18,7 @@ const __dirname = dirname(__filename);
 const SENDER_EMAIL = process.env.SENDER_EMAIL;
 
 export const everyTenMinScheduler = () => {
-  cron.schedule("*/10 * * * *", async () => {
+  cron.schedule("*/15 * * * *", async () => {
     console.info("everyTenMinScheduler started");
 
     try {
@@ -31,6 +32,8 @@ export const everyTenMinScheduler = () => {
         return;
       }
 
+      console.log(newsArticles.length, "news articles length");
+
       const categories = newsArticles.flatMap((article) => article.category);
       const uniqueCategories = [...new Set(categories)];
 
@@ -39,7 +42,7 @@ export const everyTenMinScheduler = () => {
         uniqueCategories,
         "immediately"
       );
-
+      console.log(users, "users length");
       if (users.length === 0) {
         logger.info("No users found with immediate notification preferences.");
         return;
@@ -49,7 +52,7 @@ export const everyTenMinScheduler = () => {
       const emailUsers = users.filter(
         (user) => user.notification_type === "email"
       );
-
+      console.log(emailUsers, "email users");
       if (emailUsers.length > 0) {
         const htmlContent = await ejs.renderFile(
           path.join(__dirname, "templates", "newsTemplate.ejs"),
@@ -59,21 +62,33 @@ export const everyTenMinScheduler = () => {
           }
         );
 
-        emailUsers.forEach((user) => {
-          mailQueue.add(
-            "mailQueue",
-            {
-              sender: SENDER_EMAIL,
-              receiver: user.email,
-              subject: "Latest News",
-              htmlContent,
-            },
-            {
-              removeOnComplete: true,
-              removeOnFail: true,
-            }
-          );
+        // emailUsers.forEach((user) => {
+        //   mailQueue.add(
+        //     "mailQueue",
+        //     {
+        //       sender: SENDER_EMAIL,
+        //       receiver: user.email,
+        //       subject: "Latest News",
+        //       htmlContent,
+        //     },
+        //     {
+        //       removeOnComplete: true,
+        //       removeOnFail: true,
+        //     }
+        //   );
+        // });
+        // logger.info(
+        //   `Queued email notifications for ${emailUsers.length} users.`
+        // );
+        emailUsers.forEach(async (user) => {
+          sendMail({
+            sender: SENDER_EMAIL,
+            receiver: user.email,
+            htmlContent,
+            subject: "Hourly News",
+          });
         });
+
         logger.info(
           `Queued email notifications for ${emailUsers.length} users.`
         );
@@ -83,7 +98,7 @@ export const everyTenMinScheduler = () => {
       const pushUsers = users.filter(
         (user) => user.notification_type === "push"
       );
-
+      console.log(pushUsers, "push users");
       if (pushUsers.length > 0) {
         const notificationContent = newsArticles.map((news) => ({
           title: news.title,
@@ -91,19 +106,31 @@ export const everyTenMinScheduler = () => {
           link: news.link,
         }));
 
-        pushUsers.forEach((user) => {
-          notificationQueue.add(
-            "notificationQueue",
-            {
-              notificationContent,
-              user_id: user._id,
-            },
-            {
-              removeOnComplete: true,
-              removeOnFail: true,
-            }
-          );
+        // pushUsers.forEach((user) => {
+        //   notificationQueue.add(
+        //     "notificationQueue",
+        //     {
+        //       notificationContent,
+        //       user_id: user._id,
+        //     },
+        //     {
+        //       removeOnComplete: true,
+        //       removeOnFail: true,
+        //     }
+        //   );
+        // });
+
+        pushUsers.forEach(async (user) => {
+          notificationContent.forEach(async (notification) => {
+            await NotificationModel.create({
+              title: notification.title,
+              image_url: notification.image_url,
+              link: notification.link,
+              user_id: user.user_id,
+            });
+          });
         });
+
         logger.info(`Queued push notifications for ${pushUsers.length} users.`);
       }
     } catch (error) {

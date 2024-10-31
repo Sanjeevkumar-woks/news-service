@@ -58,18 +58,7 @@ export default class newsService {
 
       console.log(fetchedArticles.length, "fetchedArticles");
 
-      const fieldsToRemove = [
-        "ai_tag",
-        "sentiment",
-        "sentiment_stats",
-        "ai_region",
-        "ai_org",
-        "duplicate",
-      ];
-      //use lodash omit to remove the fields
-      const cleanedArticles = _.omit(fetchedArticles, fieldsToRemove);
-
-      const uniqueArticles = _.uniqBy(cleanedArticles, "article_id");
+      const uniqueArticles = _.uniqBy(fetchedArticles, "article_id");
 
       const existingArticleIds = await NewsArticle.distinct("article_id");
       const existingArticleIdSet = new Set(existingArticleIds);

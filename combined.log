@@ -1,0 +1,70 @@
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-31T06:18:11.793Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-31T06:18:11.799Z"}
+{"level":"info","message":"movieFetcherWorker is running...","timestamp":"2024-10-31T06:19:45.829Z"}
+{"level":"info","message":"Notification worker started","timestamp":"2024-10-31T06:19:45.836Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730355600000 started movie fetcher worker","timestamp":"2024-10-31T06:20:00.283Z"}
+{"level":"error","message":"Error in everyTenMinScheduler: PreferencesService.getUsersByPreferences is not a function","timestamp":"2024-10-31T06:20:01.101Z"}
+{"level":"info","message":"No new articles to save.","timestamp":"2024-10-31T06:20:01.881Z"}
+{"level":"info","message":"Job repeat:6ae24a70a9a0f16dc16c307bc8bb6680:1730355600000 movie-fetcher-worker completed with result:","newArticlesCount":0,"success":true,"timestamp":"2024-10-31T06:20:01.937Z"}
+{"level":"info","message":"No new articles found in the last 10 minutes.","timestamp":"2024-10-31T06:30:00.698Z"}
+{"level":"error","message":"Error in everyHourScheduler: PreferencesService.getUsersByPreferences is not a function","timestamp":"2024-10-31T06:30:00.778Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-10-31T06:32:30.241Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-10-31T06:35:46.170Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-10-31T06:37:43.189Z"}
+{"level":"info","message":"No new articles found in the last 10 minutes.","timestamp":"2024-10-31T06:40:00.864Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-10-31T06:43:28.828Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-10-31T06:43:40.776Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-10-31T06:44:00.957Z"}
+{"level":"info","message":"No new articles to save.","timestamp":"2024-10-31T06:44:02.080Z"}
+{"level":"info","message":"No new articles found.","timestamp":"2024-10-31T06:44:02.080Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 0 new articles.","timestamp":"2024-10-31T06:44:02.081Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-10-31T06:45:00.557Z"}
+{"level":"info","message":"No new articles found in the last 10 minutes.","timestamp":"2024-10-31T06:45:00.644Z"}
+{"level":"info","message":"No new articles to save.","timestamp":"2024-10-31T06:45:01.975Z"}
+{"level":"info","message":"No new articles found.","timestamp":"2024-10-31T06:45:01.976Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 0 new articles.","timestamp":"2024-10-31T06:45:01.977Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-10-31T06:45:35.010Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-10-31T06:46:00.253Z"}
+{"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-10-31T06:46:01.486Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-10-31T06:46:01.487Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-10-31T06:46:01.487Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-10-31T06:47:00.795Z"}
+{"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-10-31T06:47:01.995Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-10-31T06:47:01.996Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-10-31T06:47:01.997Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-10-31T06:48:00.367Z"}
+{"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-10-31T06:48:01.625Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-10-31T06:48:01.626Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-10-31T06:48:01.627Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-10-31T06:49:00.957Z"}
+{"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-10-31T06:49:02.656Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-10-31T06:49:02.657Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-10-31T06:49:02.658Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-10-31T06:50:00.522Z"}
+{"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-10-31T06:50:01.700Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-10-31T06:50:01.700Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-10-31T06:50:01.702Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-10-31T06:58:00.933Z"}
+{"level":"info","message":"Queued push notifications for 1 users.","timestamp":"2024-10-31T06:58:00.962Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-10-31T06:59:00.616Z"}
+{"level":"info","message":"Queued push notifications for 1 users.","timestamp":"2024-10-31T06:59:00.627Z"}
+{"level":"info","message":"No new articles found in the last 10 minutes.","timestamp":"2024-10-31T07:03:00.131Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-10-31T07:03:36.118Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-10-31T07:04:00.329Z"}
+{"level":"info","message":"No new articles found in the last 10 minutes.","timestamp":"2024-10-31T07:04:00.417Z"}
+{"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-10-31T07:04:01.578Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-10-31T07:04:01.579Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-10-31T07:04:01.579Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-10-31T07:05:00.968Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-10-31T07:05:01.188Z"}
+{"level":"info","message":"Queued push notifications for 1 users.","timestamp":"2024-10-31T07:05:01.198Z"}
+{"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-10-31T07:05:02.292Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-10-31T07:05:02.293Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-10-31T07:05:02.294Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-10-31T07:08:17.630Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-10-31T07:09:00.088Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-10-31T07:09:00.577Z"}
+{"level":"info","message":"Queued push notifications for 1 users.","timestamp":"2024-10-31T07:09:00.595Z"}
+{"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-10-31T07:09:01.599Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-10-31T07:09:01.600Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-10-31T07:09:01.601Z"}

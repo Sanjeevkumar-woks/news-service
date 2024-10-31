@@ -1,0 +1,2 @@
+{"level":"error","message":"Error in everyTenMinScheduler: PreferencesService.getUsersByPreferences is not a function","timestamp":"2024-10-31T06:20:01.101Z"}
+{"level":"error","message":"Error in everyHourScheduler: PreferencesService.getUsersByPreferences is not a function","timestamp":"2024-10-31T06:30:00.778Z"}
