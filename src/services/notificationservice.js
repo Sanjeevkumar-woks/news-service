@@ -1,7 +1,7 @@
 import Notification from "../models/notificationsModel.js";
 import userModel from "../models/userModel.js";
 
-export class NotificationService {
+export default class NotificationService {
   static async getNotificationByUser(user_id) {
     const user = await userModel.findById({ _id: user_id });
     if (!user) {
@@ -24,5 +24,3 @@ export class NotificationService {
     return Notification.find();
   }
 }
-
-export default NotificationService;
