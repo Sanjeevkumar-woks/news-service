@@ -11,6 +11,7 @@ import _ from "lodash";
 import logger from "../utils/logger.js";
 import dotenv from "dotenv";
 import NotificationModel from "../models/notificationsModel.js";
+import sendMail from "../utils/mail.js";
 
 dotenv.config();
 

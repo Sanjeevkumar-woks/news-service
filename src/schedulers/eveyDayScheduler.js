@@ -10,7 +10,8 @@ import { dirname } from "path";
 import _ from "lodash";
 import logger from "../utils/logger.js";
 import dotenv from "dotenv";
-
+import sendMail from "../utils/mail.js";
+import NotificationModel from "../models/notificationsModel.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
