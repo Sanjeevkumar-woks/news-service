@@ -6,123 +6,117 @@ import {
 } from "../utils/constants/common.js";
 import { categoriesEnum } from "../utils/constants/categories.js";
 import preferencesService from "../services/preferencesService.js";
-import PreferencesService from "../services/preferencesService.js";
+
+const preferenceSchema = Joi.object({
+  user_id: Joi.string().required(),
+  email_frequency: Joi.string()
+    .valid(...emailFrequencyEnum)
+    .required(),
+  notification_type: Joi.string()
+    .valid(...notificationEnum)
+    .required(),
+  categories: Joi.array()
+    .items(Joi.string().valid(...categoriesEnum))
+    .required(),
+});
 
 const createPreferences = async (req, res) => {
-  const { user_id, email_frequency, notification_type, categories } = req.body;
+  try {
+    const validationError = validateJoiSchema(req.body, preferenceSchema);
+    if (validationError) {
+      return res.status(400).json({ error: validationError });
+    }
 
-  console.log(categories);
+    const { user_id, email_frequency, notification_type, categories } =
+      req.body;
+    const preferences = await preferencesService.createPreferences({
+      user_id,
+      email_frequency,
+      notification_type,
+      categories,
+    });
 
-  const validationError = validateJoiSchema({
-    schema: Joi.object({
-      user_id: Joi.string().required(),
-      email_frequency: Joi.string()
-        .valid(...emailFrequencyEnum)
-        .required(),
-      notification_type: Joi.string()
-        .valid(...notificationEnum)
-        .required(),
-      categories: Joi.array()
-        .items(Joi.string().valid(...categoriesEnum))
-        .required(),
-    }),
-
-    data: req.body,
-  });
-
-  if (validationError) {
-    return res.status(400).json({ error: validationError });
+    res.status(201).json(preferences);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to create preferences." });
   }
-
-  const preferences = await preferencesService.createPreferences({
-    user_id,
-    email_frequency,
-    notification_type,
-    categories,
-  });
-
-  res.status(200).json(preferences);
 };
 
 const updatePreferences = async (req, res) => {
-  const { preferences_id } = req.params;
+  try {
+    const validationError = validateJoiSchema(req.body, preferenceSchema);
+    if (validationError) {
+      return res.status(400).json({ error: validationError });
+    }
 
-  const { user_id, email_frequency, notification_type, categories } = req.body;
+    const { preferences_id } = req.params;
+    const { user_id, email_frequency, notification_type, categories } =
+      req.body;
+    const preferences = await preferencesService.updatePreferences({
+      preferences_id,
+      user_id,
+      email_frequency,
+      notification_type,
+      categories,
+    });
 
-  const validationError = validateJoiSchema({
-    schema: Joi.object({
-      user_id: Joi.string().required(),
-      email_frequency: Joi.string()
-        .valid(...emailFrequencyEnum)
-        .required(),
-      notification_type: Joi.string()
-        .valid(...notificationEnum)
-        .required(),
-      categories: Joi.array()
-        .items(Joi.string().valid(...categoriesEnum))
-        .required(),
-    }),
+    if (!preferences) {
+      return res.status(404).json({ error: "Preferences not found." });
+    }
 
-    data: req.body,
-  });
-
-  if (validationError) {
-    return res.status(400).json({ error: validationError });
+    res
+      .status(200)
+      .json({ message: "Preferences updated successfully", preferences });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to update preferences." });
   }
-
-  const preferences = await preferencesService.updatePreferences({
-    preferences_id,
-    user_id,
-    email_frequency,
-    notification_type,
-    categories,
-  });
-
-  res.status(200).json({
-    message: "Preferences updated successfully",
-    preferences,
-  });
 };
 
 const deletePreferences = async (req, res) => {
-  const { user_id } = req.params;
-  const validationError = validateJoiSchema({
-    schema: Joi.object({
-      user_id: Joi.string().required(),
-    }),
-    data: req.params,
-  });
+  try {
+    const validationError = validateJoiSchema(
+      req.params,
+      Joi.object({ user_id: Joi.string().required() })
+    );
+    if (validationError) {
+      return res.status(400).json({ error: validationError });
+    }
 
-  if (validationError) {
-    return res.status(400).json({ error: validationError });
+    const { user_id } = req.params;
+    const result = await preferencesService.deletePreferences({ user_id });
+
+    if (!result) {
+      return res.status(404).json({ error: "Preferences not found." });
+    }
+
+    res.status(200).json({ message: "Preferences deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to delete preferences." });
   }
-
-  await PreferencesService.deletePreferences(user_id);
-
-  res.status(200).json({ message: "Preferences deleted successfully" });
 };
 
 const getPreferences = async (req, res) => {
-  const { user_id } = req.params;
+  try {
+    const validationError = validateJoiSchema(
+      req.params,
+      Joi.object({ user_id: Joi.string().required() })
+    );
+    if (validationError) {
+      return res.status(400).json({ error: validationError });
+    }
 
-  const validationError = validateJoiSchema({
-    schema: Joi.object({
-      user_id: Joi.string().required(),
-    }),
-    data: req.params,
-  });
+    const { user_id } = req.params;
+    const preferences = await preferencesService.getPreferences({ user_id });
 
-  if (validationError) {
-    return res.status(400).json({ error: validationError });
+    if (!preferences) {
+      return res.status(404).json({ error: "Preferences not found." });
+    }
+
+    res.status(200).json({ preferences });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to retrieve preferences." });
   }
-
-  const preferences = await preferencesService.getPreferences({ user_id });
-
-  if (!preferences) {
-    return res.status(404).json({ error: "Preferences not found" });
-  }
-
-  res.status(200).json({ preferences });
 };
 
 export {

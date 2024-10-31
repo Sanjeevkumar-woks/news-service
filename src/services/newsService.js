@@ -1,69 +1,97 @@
 import axios from "axios";
 import NewsArticle from "../models/newsModel.js";
 import _ from "lodash";
-import OldNewsArticle from "../models/oldNewsModel.js";
+import logger from "../utils/logger.js";
 
 export default class newsService {
   static async getNews(params) {
-    const { category, country, page, pageSize, sort, search } = params;
+    try {
+      const {
+        category,
+        country,
+        page = 1,
+        pageSize = 10,
+        sort = "-createdAt",
+        search,
+      } = params;
+      const query = {};
 
-    const query = {};
+      if (category) query.category = { $in: [category] };
+      if (country) query.country = { $in: [country] };
+      if (search) query.title = { $regex: search, $options: "i" };
+      query.image_url = { $ne: null };
 
-    if (category) {
-      query.category = { $in: [category] };
+      const newsArticles = await NewsArticle.find(query)
+        .sort(sort)
+        .skip((page - 1) * pageSize)
+        .limit(Number(pageSize));
+
+      if (!newsArticles.length) {
+        return { message: "No news articles found" };
+      }
+
+      return newsArticles;
+    } catch (error) {
+      logger.error(`Error fetching news articles: ${error.message}`);
+      throw new Error("Error retrieving news articles.");
     }
-
-    if (country) {
-      query.country = { $in: [country] };
-    }
-
-    if (search) {
-      query.title = { $regex: search, $options: "i" };
-    }
-
-    const newsArticles = await NewsArticle.find(query)
-      .sort({ createdAt: -1 })
-      .skip(page * pageSize)
-      .limit(pageSize);
-
-    if (!newsArticles) {
-      return { message: "No news articles found" };
-    }
-
-    return newsArticles;
   }
 
   static async getNewsById(id) {
-    const news = await NewsArticle.findOne(id);
+    try {
+      const news = await NewsArticle.findOne({ article_id: id });
+      if (!news) return null;
 
-    if (!news) {
-      return { message: "No news article found" };
+      return news;
+    } catch (error) {
+      logger.error(`Error fetching news article by ID: ${error.message}`);
+      throw new Error("Error retrieving news article by ID.");
     }
-
-    return news;
   }
 
   static async fetchAndSaveArticles() {
-    const response = await axios.get(
-      "https://newsdata.io/api/1/news?apikey=pub_57205dc3e5674001387470f8dac81af1b6c58&language=en"
-    );
-    const fetchedArticles = response.data.results || [];
+    try {
+      const response = await axios.get(
+        `https://newsdata.io/api/1/news?apikey=pub_57205dc3e5674001387470f8dac81af1b6c58&language=en`
+      );
+      const fetchedArticles = response.data.results || [];
 
-    //get unique articles by article_id and title  using lodash
-    const uniqueArticles = _.uniqBy(fetchedArticles, "article_id");
+      console.log(fetchedArticles.length, "fetchedArticles");
 
-    const existingArticleIds = await NewsArticle.distinct("article_id");
-    const existingArticleIdSet = new Set(existingArticleIds);
+      const fieldsToRemove = [
+        "ai_tag",
+        "sentiment",
+        "sentiment_stats",
+        "ai_region",
+        "ai_org",
+        "duplicate",
+      ];
+      //use lodash omit to remove the fields
+      const cleanedArticles = _.omit(fetchedArticles, fieldsToRemove);
 
-    const newNewsArticles = uniqueArticles.filter(
-      (article) => !existingArticleIdSet.has(article.article_id)
-    );
+      const uniqueArticles = _.uniqBy(cleanedArticles, "article_id");
 
-    if (newNewsArticles.length > 0) {
-      await NewsArticle.insertMany(newNewsArticles);
-      console.log("News fetched and saved successfully.");
+      const existingArticleIds = await NewsArticle.distinct("article_id");
+      const existingArticleIdSet = new Set(existingArticleIds);
+
+      const newNewsArticles = uniqueArticles.filter(
+        (article) => !existingArticleIdSet.has(article.article_id)
+      );
+
+      if (newNewsArticles.length) {
+        const result = await NewsArticle.insertMany(newNewsArticles);
+
+        logger.info(
+          `Fetched and saved ${newNewsArticles.length} new articles.`
+        );
+      } else {
+        logger.info("No new articles to save.");
+      }
+
+      return newNewsArticles;
+    } catch (error) {
+      logger.error(`Error fetching and saving articles: ${error.message}`);
+      throw new Error("Error fetching and saving articles.");
     }
-
-    return newNewsArticles;
   }
 }

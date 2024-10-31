@@ -2,29 +2,47 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import sendMail from "../utils/mail.js";
 import Users from "../models/userModel.js";
+import Joi from "joi";
+
+const sendErrorResponse = (res, status, message) => {
+  return res.status(status).json({ error: message });
+};
+
+// Define validation schemas
+const userSchema = Joi.object({
+  userName: Joi.string().min(3).max(30).required(),
+  password: Joi.string().min(6).max(50).required(),
+  emailId: Joi.string().email().required(),
+});
+
+const loginSchema = Joi.object({
+  userName: Joi.string().required(),
+  password: Joi.string().required(),
+});
+
+const passwordSchema = Joi.object({
+  password: Joi.string().min(6).max(50).required(),
+});
+
 export class AuthController {
   // User registration
   static async register(req, res) {
     try {
-      const { userName, password, emailId } = req.body;
-
-      // Check for missing fields
-      if (!userName || !password || !emailId) {
-        return res
-          .status(400)
-          .json({ message: "Username, password, and emailId are required" });
+      const { error } = userSchema.validate(req.body);
+      if (error) {
+        return sendErrorResponse(res, 400, error.details[0].message);
       }
+
+      const { userName, password, emailId } = req.body;
 
       // Check if user already exists
       const existingUser = await Users.findOne({ emailId });
-
       if (existingUser) {
-        return res.status(400).json({ message: "User already exists" });
+        return sendErrorResponse(res, 400, "User already exists");
       }
 
       // Hash the password
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(password, salt);
+      const hashedPassword = await bcrypt.hash(password, 10);
 
       // Create new user
       const user = new Users({
@@ -36,52 +54,47 @@ export class AuthController {
 
       // Save the user to the database
       await user.save();
-
-      // Send success response
       return res.status(201).json({ message: "User registered successfully" });
     } catch (err) {
-      if (err.code === 11000 && err.keyPattern && err.keyPattern.userName) {
-        // Handle duplicate userName error
-        return res.status(400).json({ message: "Username already exists" });
+      if (err.code === 11000) {
+        return sendErrorResponse(
+          res,
+          400,
+          "Duplicate field error: " + Object.keys(err.keyPattern).join(", ")
+        );
       }
-      // Handle any other errors
-      return res.status(500).json({ message: "Internal server error" });
+      return sendErrorResponse(res, 500, "Internal server error");
     }
   }
 
   // User login
   static async login(req, res) {
     try {
-      const { userName, password } = req.body;
-
-      // Check for missing fields
-      if (!userName || !password) {
-        return res
-          .status(400)
-          .json({ message: "Username and password are required" });
+      const { error } = loginSchema.validate(req.body);
+      if (error) {
+        return sendErrorResponse(res, 400, error.details[0].message);
       }
 
+      const { userName, password } = req.body;
+
       const user = await Users.findOne({
-        $or: [{ emailId: userName }, { userName: userName }],
+        $or: [{ emailId: userName }, { userName }],
       });
 
       // Check if user exists
       if (!user) {
-        return res.status(400).json({ message: "User not found" });
+        return sendErrorResponse(res, 400, "User not found");
       }
 
       // Compare the provided password with the stored hash
       const isPasswordMatch = await bcrypt.compare(password, user.password);
-
       if (!isPasswordMatch) {
-        return res
-          .status(400)
-          .json({ message: "Invalid username or password" });
+        return sendErrorResponse(res, 400, "Invalid username or password");
       }
 
       // Check if the user is verified
       if (!user.isVerified) {
-        return res.status(400).json({ message: "Please verify your email" });
+        return sendErrorResponse(res, 400, "Please verify your email");
       }
 
       // Generate JWT token
@@ -91,7 +104,7 @@ export class AuthController {
         { expiresIn: "1d" }
       );
 
-      //set cookie with token for domanain http://localhost:5173/
+      // Set cookie with token
       res.cookie("token", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production", // Only secure in production
@@ -100,72 +113,78 @@ export class AuthController {
       });
       res.status(200).json({ message: "Login successful", token });
     } catch (err) {
-      // Handle server errors
-      return res.status(500).json({ message: "Internal server error" });
+      return sendErrorResponse(res, 500, "Internal server error");
     }
   }
 
-  // logout
+  // Logout
   static async logout(req, res) {
     res.clearCookie("token", { httpOnly: true });
     res.status(200).json({ message: "Logout successful" });
   }
 
-  //forgot password
+  // Forgot password
   static async forgetPassword(req, res) {
-    const { emailId } = req.body;
+    try {
+      const { emailId } = req.body;
+      const user = await Users.findOne({ emailId });
 
-    const user = await Users.findOne({ emailId });
+      if (!user) {
+        return sendErrorResponse(res, 400, "User not found");
+      }
 
-    if (!user) {
-      return res.status(400).json({ message: "User not found" });
+      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "1d",
+      });
+      const link = `${process.env.RESET_PASSWORD_URL}/resetPassword?token=${token}`; // Using env variable for URL
+
+      // Send email
+      await sendMail(
+        process.env.EMAIL_SENDER, // Using env variable for sender email
+        emailId,
+        `Click on the link to reset your password: ${link}`,
+        "Reset Password Link"
+      );
+
+      res
+        .status(200)
+        .json({ message: "Reset password link sent to your email" });
+    } catch (err) {
+      return sendErrorResponse(res, 500, "Internal server error");
     }
-    const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
-    });
-    const link = `https://resetpassword-app.netlify.app/resetPassword?token=${token}`; // Replace with your reset password link
-
-    //send email
-    sendMail(
-      "sanjeevmanagutti@gmail.com",
-      emailId,
-      `Click on the link to reset your password: ${link}`,
-      "Reset Password Link"
-    );
-
-    res.status(200).json({ message: "Reset password link sent to your email" });
   }
 
-  //reset password
+  // Reset password
   static async resetPassword(req, res) {
-    const { password } = req.body;
+    const { error } = passwordSchema.validate(req.body);
     const { token } = req.query;
+
+    if (error) {
+      return sendErrorResponse(res, 400, error.details[0].message);
+    }
 
     try {
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
       const user = await Users.findById(decoded._id);
 
       if (!user) {
-        return res.status(400).json({ message: "User not found" });
+        return sendErrorResponse(res, 400, "User not found");
       }
-      const salt = await bcrypt.genSalt(10);
 
-      const hashedPassword = await bcrypt.hash(password, salt);
-
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
       user.password = hashedPassword;
-      const response = await user.save();
+      await user.save();
 
       res.status(200).json({ message: "Password reset successfully" });
     } catch (err) {
       if (err.name === "JsonWebTokenError") {
-        return res.status(400).json({ message: "Invalid token" });
+        return sendErrorResponse(res, 400, "Invalid token");
       }
       if (err.name === "TokenExpiredError") {
-        return res.status(401).json({ message: "Token expired" });
+        return sendErrorResponse(res, 401, "Token expired");
       }
       console.error(err);
-      return res.status(500).json({ message: "Internal server error" });
+      return sendErrorResponse(res, 500, "Internal server error");
     }
   }
 }

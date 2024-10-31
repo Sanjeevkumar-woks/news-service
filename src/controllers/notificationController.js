@@ -1,5 +1,5 @@
 import Notification from "../models/notificationsModel.js";
-import NotificationService from "../services/notificationservice.js";
+import NotificationService from "../services/notificationService.js";
 
 const getAllNotifications = async (req, res) => {
   const notifications = await Notification.find();

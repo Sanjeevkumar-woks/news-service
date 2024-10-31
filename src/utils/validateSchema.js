@@ -1,8 +1,7 @@
-export const validateJoiSchema = ({ schema, data }) => {
-  const { error } = schema.validate(data);
-
+export const validateJoiSchema = (data, schema) => {
+  const { error } = schema.validate(data, { abortEarly: false });
   if (error) {
-    return error.message;
+    return error.details.map((detail) => detail.message).join(", ");
   }
   return null;
 };

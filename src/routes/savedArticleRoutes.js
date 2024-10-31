@@ -5,12 +5,12 @@ const savedArticleRoutes = Router();
 
 //get saved articles
 savedArticleRoutes.get(
-  "/get-saved-articles",
+  "/get/:user_id",
   savedArticleController.getSavedArticles
 );
 
 //save article
-savedArticleRoutes.post("/save-article", savedArticleController.saveArticle);
+savedArticleRoutes.post("/save", savedArticleController.saveArticle);
 
 //delete saved article
 savedArticleRoutes.delete(

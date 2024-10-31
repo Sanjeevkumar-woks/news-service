@@ -7,11 +7,13 @@ const redisHost = process.env.REDIS_HOST;
 const redisPort = process.env.REDIS_PORT;
 const redisPassword = process.env.REDIS_PASSWORD;
 
+// Create Redis client
 const connectionClient = createClient({
   url: `redis://${redisHost}:${redisPort}`,
   password: redisPassword,
 });
 
+// Connect to Redis
 const connectToRedis = async () => {
   try {
     await connectionClient.connect();
@@ -22,11 +24,14 @@ const connectToRedis = async () => {
   }
 };
 
+// Export Redis client
 const redis = {
   host: process.env.REDIS_HOST,
   port: process.env.REDIS_PORT,
   password: process.env.REDIS_PASSWORD,
 };
+
+// Get Redis client
 const getRedisClient = () => {
   return redis;
 };
