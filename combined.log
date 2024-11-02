@@ -68,3 +68,269 @@
 {"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-10-31T07:09:01.599Z"}
 {"level":"info","message":"New articles saved successfully.","timestamp":"2024-10-31T07:09:01.600Z"}
 {"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-10-31T07:09:01.601Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T08:45:36.827Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T08:45:36.867Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T08:45:36.868Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T08:46:54.537Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T08:46:54.556Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T08:46:54.557Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T08:48:36.106Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T08:48:36.133Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T08:48:36.134Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-01T08:50:01.003Z"}
+{"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-11-01T08:50:02.786Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-11-01T08:50:02.787Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-11-01T08:50:02.788Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T08:57:43.532Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T08:57:43.569Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T08:57:43.570Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T08:58:26.896Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T08:58:26.908Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T08:58:26.908Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T08:59:26.501Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T08:59:26.512Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T08:59:26.512Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T08:59:52.641Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T08:59:52.654Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T08:59:52.654Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-01T09:00:00.726Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-11-01T09:00:00.906Z"}
+{"level":"info","message":"Queued push notifications for 1 users.","timestamp":"2024-11-01T09:00:00.927Z"}
+{"level":"info","message":"Fetched and saved 10 new articles.","timestamp":"2024-11-01T09:00:04.470Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-11-01T09:00:04.472Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 10 new articles.","timestamp":"2024-11-01T09:00:04.474Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:01:38.427Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:01:38.462Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:01:38.462Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:03:23.311Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:03:23.348Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:03:23.349Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:09:14.682Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:09:14.697Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:09:14.697Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-01T09:10:00.110Z"}
+{"level":"error","message":"Error fetching and saving articles: _uniqueBy is not defined","timestamp":"2024-11-01T09:10:01.521Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Error fetching and saving articles.","timestamp":"2024-11-01T09:10:01.522Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:11:41.711Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:11:41.744Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:11:41.745Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:13:29.892Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:13:29.921Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:13:29.922Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:14:51.515Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:14:51.537Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:14:51.539Z"}
+{"level":"error","message":"Error in everyTenMinScheduler: _uniqBy is not defined","timestamp":"2024-11-01T09:15:00.744Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:15:47.482Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:15:47.519Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:15:47.520Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:16:52.645Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:16:52.723Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:16:52.728Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-01T09:20:00.686Z"}
+{"level":"error","message":"Error fetching and saving articles: _uniqBy is not defined","timestamp":"2024-11-01T09:20:01.938Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Error fetching and saving articles.","timestamp":"2024-11-01T09:20:01.939Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:20:12.668Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:20:12.680Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:20:12.681Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:27:16.138Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:27:16.152Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:27:16.152Z"}
+{"level":"info","message":"everyHourScheduler started.","timestamp":"2024-11-01T09:30:00.651Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-01T09:30:00.749Z"}
+{"level":"error","message":"Error in everyTenMinScheduler: _uniqBy is not defined","timestamp":"2024-11-01T09:30:01.189Z"}
+{"level":"info","message":"Email notifications sent to 1 users.","timestamp":"2024-11-01T09:30:01.333Z"}
+{"level":"error","message":"Error fetching and saving articles: _uniqBy is not defined","timestamp":"2024-11-01T09:30:02.876Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Error fetching and saving articles.","timestamp":"2024-11-01T09:30:02.877Z"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1730453404 41be03b00d2f7-7ee45a0d6c2sm2184677a12.76 - gsmtp","timestamp":"2024-11-01T09:30:04.943Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:36:17.885Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:36:17.940Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:36:17.943Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:37:59.948Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:37:59.999Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:38:00.001Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:38:51.684Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:38:51.762Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:38:51.763Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-01T09:40:00.471Z"}
+{"level":"error","message":"Error fetching and saving articles: newNewsArticles is not defined","timestamp":"2024-11-01T09:40:03.140Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Error fetching and saving articles.","timestamp":"2024-11-01T09:40:03.142Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:43:55.354Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:43:55.373Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:43:55.373Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:44:48.193Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:44:48.203Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:44:48.204Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-11-01T09:45:00.518Z"}
+{"level":"info","message":"Queued push notifications for 1 users.","timestamp":"2024-11-01T09:45:00.547Z"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1730454303 d2e1a72fcca58-720bc31ef5dsm2333251b3a.220 - gsmtp","timestamp":"2024-11-01T09:45:03.992Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:49:02.174Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:49:02.190Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:49:02.191Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-01T09:49:16.595Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-01T09:49:16.604Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-01T09:49:16.605Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-01T09:50:00.006Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-01T09:50:01.145Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-01T09:50:01.149Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T04:10:00.529Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T04:10:00.551Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T04:10:00.552Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T04:12:50.994Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T04:12:51.007Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T04:12:51.007Z"}
+{"level":"info","message":"No new articles found in the last 10 minutes.","timestamp":"2024-11-02T04:15:00.307Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T04:20:00.214Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T04:20:03.907Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T04:20:03.913Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T04:30:00.223Z"}
+{"level":"info","message":"everyHourScheduler started.","timestamp":"2024-11-02T04:30:00.338Z"}
+{"level":"info","message":"Email notifications sent to 1 users.","timestamp":"2024-11-02T04:30:00.662Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-11-02T04:30:00.737Z"}
+{"level":"info","message":"Queued push notifications for 1 users.","timestamp":"2024-11-02T04:30:00.740Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T04:30:01.977Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T04:30:01.980Z"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1730521803 d9443c01a7336-211056edc34sm28502705ad.51 - gsmtp","timestamp":"2024-11-02T04:30:04.161Z"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1730521805 98e67ed59e1d1-2e93db17b19sm3525425a91.38 - gsmtp","timestamp":"2024-11-02T04:30:06.081Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T04:40:01.004Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T04:40:02.155Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T04:40:02.159Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T04:43:21.108Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T04:43:21.147Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T04:43:21.148Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T04:43:40.716Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T04:43:40.751Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T04:43:40.752Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T04:44:36.829Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T04:44:36.858Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T04:44:36.859Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T04:46:37.049Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T04:46:37.066Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T04:46:37.067Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T04:51:38.045Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T04:51:38.074Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T04:51:38.075Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:00:01.016Z"}
+{"level":"info","message":"No new articles found in the last 10 minutes.","timestamp":"2024-11-02T05:00:01.313Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:00:04.212Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:00:04.219Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:10:00.940Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:10:02.198Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:10:02.210Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:12:46.344Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:12:46.360Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:12:46.361Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-11-02T05:15:00.885Z"}
+{"level":"info","message":"Queued push notifications for 1 users.","timestamp":"2024-11-02T05:15:00.923Z"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1730524504 d2e1a72fcca58-720bc1e582esm3486063b3a.52 - gsmtp","timestamp":"2024-11-02T05:15:04.378Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:16:51.670Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:16:51.705Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:16:51.706Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:18:05.462Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:18:05.472Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:18:05.472Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:20:00.607Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:20:02.749Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:20:02.753Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:24:39.075Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:24:39.089Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:24:39.090Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:24:50.408Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:24:50.418Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:24:50.418Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:25:00.510Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:25:01.613Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:25:01.615Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:25:27.701Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:25:27.718Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:25:27.719Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:26:08.227Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:26:08.240Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:26:08.241Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:26:31.755Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:26:31.770Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:26:31.770Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:27:00.035Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:27:01.043Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:27:01.045Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:28:00.606Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:28:02.025Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:28:02.026Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:28:20.223Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:28:20.235Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:28:20.235Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:29:00.612Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:29:01.654Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:29:01.655Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:29:49.236Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:29:49.274Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:29:49.275Z"}
+{"level":"info","message":"everyHourScheduler started.","timestamp":"2024-11-02T05:30:00.388Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:30:00.400Z"}
+{"level":"info","message":"Email notifications sent to 1 users.","timestamp":"2024-11-02T05:30:00.550Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-11-02T05:30:00.566Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:30:01.406Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:30:01.408Z"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1730525403 41be03b00d2f7-7ee44bf470dsm3364953a12.0 - gsmtp","timestamp":"2024-11-02T05:30:03.843Z"}
+{"level":"info","message":"Email sent: 250 2.0.0 OK  1730525403 d2e1a72fcca58-720bc1b90dasm3531223b3a.30 - gsmtp","timestamp":"2024-11-02T05:30:04.213Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:31:00.991Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:31:03.057Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:31:03.058Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:32:00.575Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:32:01.592Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:32:01.597Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:33:00.158Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:33:01.359Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:33:01.371Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:34:00.842Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:34:01.889Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:34:01.892Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:34:14.312Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:34:14.325Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:34:14.325Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:34:55.272Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:34:55.283Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:34:55.284Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:35:00.331Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:35:01.278Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:35:01.279Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T05:37:55.258Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T05:37:55.278Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T05:37:55.281Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T05:38:00.324Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T05:38:01.468Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:38:01.470Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T10:05:09.369Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T10:05:09.382Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T10:05:09.382Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T10:06:00.897Z"}
+{"level":"info","message":"No new articles found. Exiting...","timestamp":"2024-11-02T10:06:02.701Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T10:06:02.704Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T10:12:01.445Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T10:12:01.466Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T10:12:01.467Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T10:13:00.013Z"}
+{"level":"info","message":"Fetched and saved 6 new articles.","timestamp":"2024-11-02T10:13:01.838Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-11-02T10:13:01.880Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 6 new articles.","timestamp":"2024-11-02T10:13:01.881Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T10:14:00.676Z"}
+{"level":"info","message":"Fetched and saved 7 new articles.","timestamp":"2024-11-02T10:14:02.002Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-11-02T10:14:02.086Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 7 new articles.","timestamp":"2024-11-02T10:14:02.089Z"}
+{"level":"info","message":"Queued email notifications for 1 users.","timestamp":"2024-11-02T10:15:00.416Z"}
+{"level":"info","message":"Movie fetcher cron job started","timestamp":"2024-11-02T10:15:00.559Z"}
+{"level":"info","message":"Fetched and saved 1 new articles.","timestamp":"2024-11-02T10:15:01.565Z"}
+{"level":"info","message":"New articles saved successfully.","timestamp":"2024-11-02T10:15:01.575Z"}
+{"level":"info","message":"Movie fetcher cron job completed with 1 new articles.","timestamp":"2024-11-02T10:15:01.575Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T10:17:17.319Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T10:17:17.339Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T10:17:17.340Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T10:19:30.215Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T10:19:30.236Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T10:19:30.236Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T10:22:02.502Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T10:22:02.534Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T10:22:02.535Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T10:27:51.008Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T10:27:51.045Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T10:27:51.046Z"}

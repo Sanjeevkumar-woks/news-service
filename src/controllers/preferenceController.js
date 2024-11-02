@@ -7,6 +7,7 @@ import {
 import { categoriesEnum } from "../utils/constants/categories.js";
 import preferencesService from "../services/preferencesService.js";
 
+// Validation schemas
 const preferenceSchema = Joi.object({
   user_id: Joi.string().required(),
   email_frequency: Joi.string()
@@ -20,15 +21,20 @@ const preferenceSchema = Joi.object({
     .required(),
 });
 
+// Controller Preferences
 const createPreferences = async (req, res) => {
   try {
+    // Validate request body
     const validationError = validateJoiSchema(req.body, preferenceSchema);
     if (validationError) {
       return res.status(400).json({ error: validationError });
     }
 
+    //  Define request body
     const { user_id, email_frequency, notification_type, categories } =
       req.body;
+
+    // Create preferences
     const preferences = await preferencesService.createPreferences({
       user_id,
       email_frequency,
@@ -43,14 +49,19 @@ const createPreferences = async (req, res) => {
   }
 };
 
+// Update preferences
 const updatePreferences = async (req, res) => {
   try {
+    // Validate request body
     const validationError = validateJoiSchema(req.body, preferenceSchema);
     if (validationError) {
       return res.status(400).json({ error: validationError });
     }
 
+    // Define request body
     const { preferences_id } = req.params;
+
+    // Update preferences
     const { user_id, email_frequency, notification_type, categories } =
       req.body;
     const preferences = await preferencesService.updatePreferences({
@@ -73,6 +84,7 @@ const updatePreferences = async (req, res) => {
   }
 };
 
+// Delete preferences
 const deletePreferences = async (req, res) => {
   try {
     const validationError = validateJoiSchema(
@@ -82,7 +94,7 @@ const deletePreferences = async (req, res) => {
     if (validationError) {
       return res.status(400).json({ error: validationError });
     }
-
+    // Define request body
     const { user_id } = req.params;
     const result = await preferencesService.deletePreferences({ user_id });
 
@@ -96,6 +108,7 @@ const deletePreferences = async (req, res) => {
   }
 };
 
+// Get preferences
 const getPreferences = async (req, res) => {
   try {
     const validationError = validateJoiSchema(
@@ -105,7 +118,7 @@ const getPreferences = async (req, res) => {
     if (validationError) {
       return res.status(400).json({ error: validationError });
     }
-
+    // Define request body
     const { user_id } = req.params;
     const preferences = await preferencesService.getPreferences({ user_id });
 

@@ -20,7 +20,7 @@ const SENDER_EMAIL = process.env.SENDER_EMAIL;
 
 export const everyDayScheduler = () => {
   cron.schedule("0 0 * * *", async () => {
-    console.info("everyDayScheduler started.");
+    logger.info("everyDayScheduler started.");
 
     try {
       // Fetch news articles created in the last 24 hours, limited to 10
@@ -28,12 +28,21 @@ export const everyDayScheduler = () => {
         createdAt: { $gt: new Date(Date.now() - 24 * 60 * 60 * 1000) },
       }).limit(10);
 
+      // Check if any news articles were found
       if (newsArticles.length === 0) {
         logger.info("No new articles found in the last 24 hours.");
         return;
       }
 
-      const categories = newsArticles.flatMap((article) => article.category);
+      //filer out duplicate news articles by article_id and title
+      const uniqueNewsArticles = _.uniqBy(newsArticles, "title");
+
+      // Extract categories from news articles
+      const categories = uniqueNewsArticles.flatMap(
+        (article) => article.category
+      );
+
+      // Filter out duplicate categories
       const uniqueCategories = _.uniq(categories);
 
       // Fetch users with daily notification preference in specified categories
@@ -42,6 +51,7 @@ export const everyDayScheduler = () => {
         "daily"
       );
 
+      // Check if any users were found
       if (users.length === 0) {
         logger.info("No users found with daily notification preferences.");
         return;
@@ -52,11 +62,12 @@ export const everyDayScheduler = () => {
         (user) => user.notification_type === "email"
       );
 
+      // Render email template
       if (emailUsers.length > 0) {
         const htmlContent = await ejs.renderFile(
           path.join(__dirname, "templates", "newsTemplate.ejs"),
           {
-            newNews: newsArticles,
+            newNews: uniqueNewsArticles,
             unsubscribeLink: "https://your-website.com/unsubscribe",
           }
         );
@@ -77,12 +88,13 @@ export const everyDayScheduler = () => {
         //   );
         // });
 
+        // Send email
         emailUsers.forEach(async (user) => {
           sendMail({
             sender: SENDER_EMAIL,
             receiver: user.email,
             htmlContent,
-            subject: "Hourly News",
+            subject: "Daily News",
           });
         });
         logger.info(
@@ -95,8 +107,9 @@ export const everyDayScheduler = () => {
         (user) => user.notification_type === "push"
       );
 
+      // Render push template
       if (pushUsers.length > 0) {
-        const notificationContent = newsArticles.map((news) => ({
+        const notificationContent = uniqueNewsArticles.map((news) => ({
           title: news.title,
           image_url: news.image_url,
           link: news.link,
@@ -115,6 +128,8 @@ export const everyDayScheduler = () => {
         //     }
         //   );
         // });
+
+        // Send push notifications
         pushUsers.forEach(async (user) => {
           notificationContent.forEach((notification) => {
             NotificationModel.create({

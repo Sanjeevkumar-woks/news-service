@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//notification Schema
 const notificationSchema = new mongoose.Schema(
   {
     title: {

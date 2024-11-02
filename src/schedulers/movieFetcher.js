@@ -3,15 +3,18 @@ import _ from "lodash";
 import newsService from "../services/newsService.js";
 import logger from "../utils/logger.js";
 
-export function startMovieFetcherCronJob() {
-  // Schedule the cron job to run every 30
+export const movieFetcherScheduler = () => {
+  // Schedule the cron job to run every 10 minutes
   cron.schedule("*/10 * * * *", async () => {
-    console.log("Movie fetcher cron job started");
     logger.info("Movie fetcher cron job started");
 
     try {
+      // Fetch new news articles and save them
       const newArticles = await newsService.fetchAndSaveArticles();
 
+      console.log(newArticles.length, "newArticles");
+
+      // Fetch new news articles and save them
       if (newArticles.length > 0) {
         logger.info("New articles saved successfully.");
       } else {
@@ -33,6 +36,4 @@ export function startMovieFetcherCronJob() {
   });
 
   logger.info("Movie fetcher cron job is scheduled and running...");
-}
-
-export default startMovieFetcherCronJob;
+};

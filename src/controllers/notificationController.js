@@ -12,7 +12,7 @@ const getNotificationByUser = async (req, res) => {
   console.log("getNotificationByUser");
 
   const { user_id } = req.params;
-  console.log(user_id);
+
   const notifications = await NotificationService.getNotificationByUser(
     user_id
   );

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//NewsArticle Schema
 const newsArticleSchema = new mongoose.Schema(
   {
     article_id: {

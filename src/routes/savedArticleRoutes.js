@@ -3,14 +3,14 @@ import * as savedArticleController from "../controllers/savedArticleController.j
 
 const savedArticleRoutes = Router();
 
+//save article
+savedArticleRoutes.post("/save", savedArticleController.saveArticle);
+
 //get saved articles
 savedArticleRoutes.get(
   "/get/:user_id",
   savedArticleController.getSavedArticles
 );
-
-//save article
-savedArticleRoutes.post("/save", savedArticleController.saveArticle);
 
 //delete saved article
 savedArticleRoutes.delete(

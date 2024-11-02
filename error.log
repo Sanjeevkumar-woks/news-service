@@ -1,2 +1,31 @@
 {"level":"error","message":"Error in everyTenMinScheduler: PreferencesService.getUsersByPreferences is not a function","timestamp":"2024-10-31T06:20:01.101Z"}
 {"level":"error","message":"Error in everyHourScheduler: PreferencesService.getUsersByPreferences is not a function","timestamp":"2024-10-31T06:30:00.778Z"}
+{"level":"error","message":"Error fetching and saving articles: _uniqueBy is not defined","timestamp":"2024-11-01T09:10:01.521Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Error fetching and saving articles.","timestamp":"2024-11-01T09:10:01.522Z"}
+{"level":"error","message":"Error in everyTenMinScheduler: _uniqBy is not defined","timestamp":"2024-11-01T09:15:00.744Z"}
+{"level":"error","message":"Error fetching and saving articles: _uniqBy is not defined","timestamp":"2024-11-01T09:20:01.938Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Error fetching and saving articles.","timestamp":"2024-11-01T09:20:01.939Z"}
+{"level":"error","message":"Error in everyTenMinScheduler: _uniqBy is not defined","timestamp":"2024-11-01T09:30:01.189Z"}
+{"level":"error","message":"Error fetching and saving articles: _uniqBy is not defined","timestamp":"2024-11-01T09:30:02.876Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Error fetching and saving articles.","timestamp":"2024-11-01T09:30:02.877Z"}
+{"level":"error","message":"Error fetching and saving articles: newNewsArticles is not defined","timestamp":"2024-11-01T09:40:03.140Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Error fetching and saving articles.","timestamp":"2024-11-01T09:40:03.142Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-01T09:50:01.149Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T04:20:03.913Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T04:30:01.980Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T04:40:02.159Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:00:04.219Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:10:02.210Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:20:02.753Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:25:01.615Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:27:01.045Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:28:02.026Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:29:01.655Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:30:01.408Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:31:03.058Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:32:01.597Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:33:01.371Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:34:01.892Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:35:01.279Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T05:38:01.470Z"}
+{"level":"error","message":"Error in movie fetcher cron job: Cannot read properties of undefined (reading 'length')","timestamp":"2024-11-02T10:06:02.704Z"}

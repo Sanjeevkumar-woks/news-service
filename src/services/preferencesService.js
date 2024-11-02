@@ -1,17 +1,22 @@
 import Preferences from "../models/preferences.js";
 
 export default class PreferencesService {
+  //create preferences
   static async createPreferences({
     user_id,
     email_frequency,
     notification_type,
     categories,
   }) {
+    //check if preferences already exist
     const existingPreferences = await Preferences.findOne({ user_id });
+
+    //if preferences already exist
     if (existingPreferences) {
       throw new Error("Preferences already exist.");
     }
 
+    //
     const preferences = await Preferences.create({
       user_id,
       email_frequency,
@@ -21,15 +26,14 @@ export default class PreferencesService {
 
     await preferences.save();
 
-    console.log(preferences);
-
     if (!preferences) {
       throw new Error("Failed to create preferences.");
     }
 
-    return { message: "Preferences created successfully", preferences };
+    return { message: "Preferences created successfully" };
   }
 
+  //update preferences
   static async updatePreferences({
     preferences_id,
     user_id,
@@ -37,12 +41,14 @@ export default class PreferencesService {
     notification_type,
     categories,
   }) {
+    //check if preferences already exist and update it
     const preferences = await Preferences.findOneAndUpdate(
       { _id: preferences_id, user_id },
       { email_frequency, notification_type, categories },
       { new: true }
     );
 
+    //if preferences does not exist throw error
     if (!preferences) {
       throw new Error("Preferences not found.");
     }
@@ -50,6 +56,7 @@ export default class PreferencesService {
     return preferences;
   }
 
+  //delete preferences by user id
   static async deletePreferences({ user_id }) {
     const preferences = await Preferences.findOneAndDelete({ user_id });
     if (!preferences) {
@@ -57,7 +64,7 @@ export default class PreferencesService {
     }
     return preferences;
   }
-
+  //get preferences by user id
   static async getPreferences({ user_id }) {
     const preferences = await Preferences.findOne({ user_id });
     if (!preferences) {
@@ -66,7 +73,9 @@ export default class PreferencesService {
     return preferences;
   }
 
+  //get users by preferences categories and email frequency
   static async getUsersByPreferences(newsCategories) {
+    console.log(newsCategories, "categories from service");
     const users = await Preferences.aggregate([
       {
         $match: {

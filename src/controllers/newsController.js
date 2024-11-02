@@ -1,4 +1,3 @@
-import OldNewsArticle from "../models/oldNewsModel.js";
 import newsService from "../services/newsService.js";
 import { validateJoiSchema } from "../utils/validateSchema.js";
 import Joi from "joi";
@@ -24,8 +23,9 @@ export const getNews = async (req, res) => {
     if (validationError) {
       return res.status(400).json({ error: validationError });
     }
-
+    // Pass the query parameters to the getNews function
     const newsArticles = await newsService.getNews(req.query);
+
     res.status(200).json({ newsArticles });
   } catch (error) {
     logger.error(`Failed to retrieve news: ${error.message}`);
@@ -40,7 +40,10 @@ export const getNewsById = async (req, res) => {
       return res.status(400).json({ error: validationError });
     }
 
+    // Pass the ID parameter to the getNewsById function
     const news = await newsService.getNewsById(req.params.id);
+
+    // Check if the news article exists
     if (!news) {
       return res.status(404).json({ message: "News article not found." });
     }

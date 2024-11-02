@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
+//savedArticle Schema
 const savedArticleSchema = new mongoose.Schema(
   {
     article_id: {
       type: String,
       required: true,
-      unique: true,
     },
     user_id: {
       type: String,

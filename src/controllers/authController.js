@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import sendMail from "../utils/mail.js";
 import Users from "../models/userModel.js";
 import Joi from "joi";
+import sendMail from "../utils/mail.js";
 
 const sendErrorResponse = (res, status, message) => {
   return res.status(status).json({ error: message });
@@ -127,23 +127,41 @@ export class AuthController {
   static async forgetPassword(req, res) {
     try {
       const { emailId } = req.body;
+
+      // Check if user exists
       const user = await Users.findOne({ emailId });
 
+      // Check if user exists
       if (!user) {
         return sendErrorResponse(res, 400, "User not found");
       }
 
+      // Generate reset password token
       const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
         expiresIn: "1d",
       });
-      const link = `${process.env.RESET_PASSWORD_URL}/resetPassword?token=${token}`; // Using env variable for URL
+
+      // Set cookie with token
+      const link = `${process.env.RESET_PASSWORD_URL}/resetPassword?token=${token}`;
+
+      //HTML content
+      const htmlContent = `<div>
+      <h1> Reset Password</h1>
+      <div>
+      <p>Hello ${user.userName},</p>
+      <p>Click the link below to reset your password:</p>
+      <a href="${link}">Reset Password</a>
+      <p>Thank you!</p>
+      </div>
+      <p>All rights reserved @megaNews</p>
+      </div>`;
 
       // Send email
       await sendMail(
-        process.env.EMAIL_SENDER, // Using env variable for sender email
+        process.env.SENDER_EMAIL, // Using env variable for sender email
         emailId,
-        `Click on the link to reset your password: ${link}`,
-        "Reset Password Link"
+        htmlContent,
+        "Reset Password Request"
       );
 
       res

@@ -20,8 +20,9 @@ const __dirname = dirname(__filename);
 const SENDER_EMAIL = process.env.SENDER_EMAIL;
 
 export const everyHourScheduler = () => {
+  // Schedule the cron job to run every hour
   cron.schedule("0 * * * *", async () => {
-    console.info("everyHourScheduler started.");
+    logger.info("everyHourScheduler started.");
 
     try {
       // Fetch news articles created in the last hour, limited to 10
@@ -35,8 +36,15 @@ export const everyHourScheduler = () => {
         logger.info("No new articles found in the last hour.");
         return;
       }
+      // filter out duplicate articles by article_id and title
+      const uniqueNewsArticles = _.uniqBy(newsArticles, "title");
 
-      const categories = newsArticles.flatMap((article) => article.category);
+      // Extract categories from news articles
+      const categories = uniqueNewsArticles.flatMap(
+        (article) => article.category
+      );
+
+      //
       const uniqueCategories = _.uniq(categories);
 
       // Fetch users with preferences matching the categories and hourly notification frequency
@@ -45,24 +53,29 @@ export const everyHourScheduler = () => {
         "hourly"
       );
 
+      // Check if no users are found
       if (users.length === 0) {
         logger.info("No users found with hourly notification preferences.");
         return;
       }
 
-      // Process email notifications
+      // filter users by email notification type
       const emailUsers = users.filter(
         (user) => user.notification_type === "email"
       );
 
+      //
       if (emailUsers.length > 0) {
+        // Render email template
         const htmlContent = await ejs.renderFile(
           path.join(__dirname, "templates", "newsTemplate.ejs"),
           {
-            newNews: newsArticles,
+            newNews: uniqueNewsArticles,
             unsubscribeLink: "https://your-website.com/unsubscribe",
           }
         );
+
+        // add to mail queue
 
         //   emailUsers.forEach((user) => {
         //     mailQueue.add(
@@ -82,6 +95,8 @@ export const everyHourScheduler = () => {
         //   logger.info(
         //     `Queued email notifications for ${emailUsers.length} users.`
         //   );
+
+        // send email
         emailUsers.forEach(async (user) => {
           sendMail({
             sender: SENDER_EMAIL,
@@ -99,8 +114,9 @@ export const everyHourScheduler = () => {
         (user) => user.notification_type === "push"
       );
 
+      // check if push users exist
       if (pushUsers.length > 0) {
-        const notificationContent = newsArticles.map((news) => ({
+        const notificationContent = uniqueNewsArticles.map((news) => ({
           title: news.title,
           image_url: news.image_url,
           link: news.link,
@@ -122,6 +138,7 @@ export const everyHourScheduler = () => {
         // logger.info(`Queued push notifications for ${pushUsers.length} users.`);
         //}
 
+        // send push notifications
         pushUsers.forEach(async (user) => {
           notificationContent.forEach((notification) => {
             NotificationModel.create({
@@ -134,6 +151,7 @@ export const everyHourScheduler = () => {
         });
       }
     } catch (error) {
+      // log error
       logger.error(`Error in everyHourScheduler: ${error.message}`);
     }
   });

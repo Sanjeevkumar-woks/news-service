@@ -1,5 +1,6 @@
 import winston from "winston";
 
+// Create a logger instance to log messages
 const logger = winston.createLogger({
   level: "info",
   format: winston.format.combine(

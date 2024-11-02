@@ -7,6 +7,10 @@ const getSavedArticles = async (req, res) => {
 
   const savedArticles = await SavedArticle.find({ user_id });
 
+  if (!savedArticles) {
+    return res.status(404).json({ message: "No saved articles found" });
+  }
+
   res.status(200).json(savedArticles);
 };
 
@@ -32,6 +36,12 @@ const saveArticle = async (req, res) => {
     user_id,
   });
 
+  await savedArticle.save();
+
+  if (!savedArticle) {
+    return res.status(500).json({ message: "Failed to save article" });
+  }
+
   res.status(200).json({ message: "Article saved successfully" });
 };
 
@@ -42,6 +52,9 @@ const deleteSavedArticle = async (req, res) => {
     article_id: id,
   });
 
+  if (!deletedArticle) {
+    return res.status(404).json({ message: "Article not found" });
+  }
   res.status(200).json({ message: "Article deleted successfully" });
 };
 

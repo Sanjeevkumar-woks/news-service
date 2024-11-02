@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//User Schema
 export const userSchema = new mongoose.Schema(
   {
     emailId: {

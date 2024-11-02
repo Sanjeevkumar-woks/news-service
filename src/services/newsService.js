@@ -4,6 +4,7 @@ import _ from "lodash";
 import logger from "../utils/logger.js";
 
 export default class newsService {
+  // Function to  get news with filters and pagination
   static async getNews(params) {
     try {
       const {
@@ -37,6 +38,7 @@ export default class newsService {
     }
   }
 
+  //get news by article id
   static async getNewsById(id) {
     try {
       const news = await NewsArticle.findOne({ article_id: id });
@@ -49,35 +51,38 @@ export default class newsService {
     }
   }
 
+  // Function to fetch and save news articles from the newsdata.io API
   static async fetchAndSaveArticles() {
     try {
       const response = await axios.get(
         `https://newsdata.io/api/1/news?apikey=pub_57205dc3e5674001387470f8dac81af1b6c58&language=en`
       );
+
+      // Filter out duplicate articles
       const fetchedArticles = response.data.results || [];
 
       console.log(fetchedArticles.length, "fetchedArticles");
 
-      const uniqueArticles = _.uniqBy(fetchedArticles, "article_id");
+      // Filter out duplicate articles
+      let uniqueArticles = _.uniqBy(fetchedArticles, "article_id");
+      uniqueArticles = _.uniqBy(uniqueArticles, "title");
+      console.log(uniqueArticles.length);
 
-      const existingArticleIds = await NewsArticle.distinct("article_id");
-      const existingArticleIdSet = new Set(existingArticleIds);
+      // Save unique articles using bulkWrite and upsert
+      const bulkOps = uniqueArticles.map((article) => ({
+        updateOne: {
+          filter: { article_id: article.article_id },
+          update: { $set: article },
+          upsert: true,
+        },
+      }));
+      console.log(bulkOps);
 
-      const newNewsArticles = uniqueArticles.filter(
-        (article) => !existingArticleIdSet.has(article.article_id)
-      );
+      const result = await NewsArticle.bulkWrite(bulkOps);
 
-      if (newNewsArticles.length) {
-        const result = await NewsArticle.insertMany(newNewsArticles);
+      logger.info(`Fetched and saved ${uniqueArticles.length} new articles.`);
 
-        logger.info(
-          `Fetched and saved ${newNewsArticles.length} new articles.`
-        );
-      } else {
-        logger.info("No new articles to save.");
-      }
-
-      return newNewsArticles;
+      return uniqueArticles;
     } catch (error) {
       logger.error(`Error fetching and saving articles: ${error.message}`);
       throw new Error("Error fetching and saving articles.");

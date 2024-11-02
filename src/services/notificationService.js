@@ -2,6 +2,7 @@ import Notification from "../models/notificationsModel.js";
 import userModel from "../models/userModel.js";
 
 export default class NotificationService {
+  //get notifications by user
   static async getNotificationByUser(user_id) {
     const user = await userModel.findById({ _id: user_id });
     if (!user) {
@@ -20,6 +21,7 @@ export default class NotificationService {
     );
   }
 
+  //get all notifications
   static async getAllNotifications() {
     return Notification.find();
   }

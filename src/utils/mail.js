@@ -1,5 +1,7 @@
 import nodeMailer from "nodemailer";
+import logger from "./logger.js";
 
+// Send mail with nodemailer and sendgrid SMTP
 const sendMail = ({ sender, receiver, htmlContent, subject }) => {
   const transporter = nodeMailer.createTransport({
     service: process.env.MAIL_SERVICE,
@@ -18,9 +20,9 @@ const sendMail = ({ sender, receiver, htmlContent, subject }) => {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.log(error);
+      logger.error(error);
     } else {
-      console.log("Email sent: " + info.response);
+      logger.info("Email sent: " + info.response);
     }
   });
 };

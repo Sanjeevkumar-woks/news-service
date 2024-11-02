@@ -20,6 +20,7 @@ export default class UserService {
     return user;
   }
 
+  // Login user service
   static async loginUser({ username, password }) {
     const user = await Users.findOne({ username });
     if (!user) {
@@ -34,6 +35,7 @@ export default class UserService {
     return user;
   }
 
+  // Get user profile
   static async getUserProfile(user_id) {
     const user = await Users.findById(user_id);
     if (!user) {
