@@ -14,6 +14,10 @@ app.use(express.json());
 // enable cors to allow cross-origin requests
 app.use(cors());
 
+//health check
+app.get("/", (req, res) => {
+  res.send("welcome to MEGA.news API");
+});
 // routes to handle requests
 app.use("/api/auth", authRouter);
 app.use("/api/news", newsRouter);

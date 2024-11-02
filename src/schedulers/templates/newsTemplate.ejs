@@ -19,6 +19,26 @@
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .header .mega {
+        font-size: 28px;
+        font-weight: bold;
+        color: #f77f00;
+      }
+      .header .news {
+        font-size: 28px;
+        font-weight: bold;
+        color: #343a40;
+      }
+      .subheading {
+        font-size: 16px;
+        color: #6c757d;
+        margin-top: 5px;
+        font-weight: 500;
+      }
       .news-card {
         background-color: #f8f9fa;
         border-radius: 8px;
@@ -50,7 +70,7 @@
       .button {
         display: inline-block;
         padding: 10px 15px;
-        background-color: #0678f1;
+        background-color: #f77f00;
         color: #ffffff;
         font-weight: 600;
         text-decoration: none;
@@ -59,7 +79,7 @@
         transition: background-color 0.3s ease;
       }
       .button:hover {
-        background-color: #0cf058;
+        background-color: #f77f10;
       }
       .footer {
         font-size: 12px;
@@ -80,6 +100,12 @@
   </head>
   <body>
     <div class="container">
+      <!-- Header with MEGA.news and subheading -->
+      <div class="header">
+        <span class="mega">MEGA</span><span class="news">.news</span>
+        <div class="subheading">News Feeds</div>
+      </div>
+
       <% newNews.forEach(news => { %>
       <div class="news-card">
         <img src="<%= news.image_url %>" alt="News Image" />
@@ -94,12 +120,13 @@
         </div>
       </div>
       <% }); %>
+
       <div class="footer">
         <p>
           If you no longer wish to receive these emails,
           <a href="<%= unsubscribeLink %>">unsubscribe here</a>.
         </p>
-        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        <p>&copy; 2024 MEGA.news. All rights reserved.</p>
       </div>
     </div>
   </body>
