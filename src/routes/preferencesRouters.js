@@ -17,6 +17,9 @@ preferencesRoutes.put(
 );
 
 //delete preferences
-preferencesRoutes.delete("/delete", preferenceController.deletePreferences);
+preferencesRoutes.delete(
+  "/delete/:user_id",
+  preferenceController.deletePreferences
+);
 
 export default preferencesRoutes;

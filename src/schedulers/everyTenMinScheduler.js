@@ -99,7 +99,7 @@ export const everyTenMinScheduler = () => {
             sender: SENDER_EMAIL,
             receiver: user.email,
             htmlContent,
-            subject: "Latest News from sanjeev",
+            subject: "Latest News from MEGA.news",
           });
         });
 

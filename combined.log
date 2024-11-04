@@ -334,3 +334,6 @@
 {"level":"info","message":"Starting cron jobs","timestamp":"2024-11-02T10:27:51.008Z"}
 {"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-02T10:27:51.045Z"}
 {"level":"info","message":"Cron jobs started","timestamp":"2024-11-02T10:27:51.046Z"}
+{"level":"info","message":"Starting cron jobs","timestamp":"2024-11-04T05:54:39.253Z"}
+{"level":"info","message":"Movie fetcher cron job is scheduled and running...","timestamp":"2024-11-04T05:54:39.269Z"}
+{"level":"info","message":"Cron jobs started","timestamp":"2024-11-04T05:54:39.270Z"}
